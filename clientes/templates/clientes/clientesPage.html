@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes - JB Chopeiras</title>
+    <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+<body>
+<div class="pagina">
+
+    <div class="miolo">
+
+        <aside class="menu-lateral">
+
+            <div class="sidebar-logo">
+                <a href="http://localhost:8000/home/">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo JB Chopeiras" class="logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="http://localhost:8000/" class="item-menu">
+                    <i class="ti ti-home"></i> Início
+                </a>
+                <a href="#" class="item-menu">
+                    <i class="ti ti-layout-dashboard"></i> Dashboard
+                </a>
+                <a href="{% url 'servicosPage' %}" class="item-menu">
+                    <i class="ti ti-clipboard-list"></i> Solicitações
+                </a>
+                <a href="{% url 'clientesPage' %}" class="item-menu ativo">
+                    <i class="ti ti-users"></i> Clientes
+                </a>
+                <a href="#" class="item-menu">
+                    <i class="ti ti-chart-bar"></i> Relatórios
+                </a>
+
+                <div class="menu-divisor"></div>
+
+                <a href="#" class="item-menu">
+                    <i class="ti ti-settings"></i> Configurações
+                </a>
+            </nav>
+
+            <div class="sidebar-usuario">
+                <div class="bolinha-user"></div>
+                <div class="sidebar-usuario-info">
+                    <span class="sidebar-usuario-nome">Julio Cesar</span>
+                    <span class="sidebar-usuario-cargo">Administrador</span>
+                </div>
+                <i class="ti ti-logout sidebar-logout" title="Sair"></i>
+            </div>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <h1 class="titulo">CLIENTES</h1>
+
+                <div class="topo-conteudo">
+                    <a href="{% url 'criar_cliente' %}" class="btn btn-criar">
+                    + Adicionar
+                    </a>
+
+                    <form method="GET" class="pesquisa-form">
+                        <input type="text" name="q"placeholder="Pesquisar cliente..." class="campo-pesquisa" value="{{ request.GET.q }}">
+                        <button type="submit" class="btn-pesquisar">
+                            <i class="ti ti-search"></i>
+                        </button>
+                </form>
+            </div>  
+
+            <div class="quadro-tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-clientes">
+                        {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.id }}</td>
+                            <td>
+                                <a href="{% url 'detalhes_cliente' cliente.id %}" class="link-cliente">
+                                    {{ cliente.nome }}
+                                </a>
+                            </td>
+                            <td>
+                                <div class="acoes">
+                                    <a href="{% url 'editar_cliente' cliente.id %}" class="btn btn-editar">Editar</a>
+                                    <a href="{% url 'excluir_cliente' cliente.id %}" class="btn btn-excluir">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">Nenhum cliente cadastrado.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

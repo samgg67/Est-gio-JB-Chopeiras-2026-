@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #251d1b;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #000000;
+    border: 1px solid #d4a300;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 0 20px #27272780;
+    max-height: 90vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #ffc400;
+    text-align: center;
+    font-size: 34px;
+    flex: 1;
+}
+
+form {
+    width: 100%;
+}
+
+form p {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: white;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d4a300;
+    border-radius: 10px;
+    background: #111111;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #ffd54a;
+    box-shadow: 0 0 8px #555555;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.btn-salvar {
+    background: #f2b600;
+    color: #000000;
+}
+
+.btn-salvar:hover {
+    background: #ffd54a;
+    transform: translateY(-1px);
+}
+
+.btn-voltar {
+    background: #FFC107;
+    color: #000000;
+    border: 1px solid #d4a300;
+}
+
+.btn-voltar:hover {
+    background: #111111;
+    color: #ffd54a;
+}
+
+.helptext {
+    display: block;
+    margin-top: 6px;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.errorlist {
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #2a0000;
+    border: 1px solid #aa2222;
+    border-radius: 8px;
+    color: #ffb3b3;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .container {
+        padding: 25px 18px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+}

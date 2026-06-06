@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JB Chopeiras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+
+<header class="topo d-flex align-items-stretch">
+    <div class="logo-wrap">
+        <img src="{% static 'images/logo.png' %}" alt="Logo JB Chopeiras">
+    </div>
+    <nav class="menu-topo">
+        <a href="">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#localizacao">Localização</a>
+    </nav>
+    <div class="usuario-topo ms-auto">
+        {% if user.is_authenticated %}
+            <div class="bolinha-user"></div>
+            <span class="nome-usuario">Olá, {{ user.username }}</span>
+            <a href="{% url 'sair' %}" class="link-sair">Sair</a>
+        {% else %}
+            <a href="{% url 'tela_entrada' %}" class="login-link">
+                <div class="bolinha-user"></div>
+                <span>Entrar / Registrar</span>
+            </a>
+        {% endif %}
+    </div>
+</header>
+
+<section class="hero d-flex align-items-center justify-content-center text-center">
+    <div class="container">
+        <p class="hero-sub mb-2">Especialistas em chopeiras comerciais</p>
+        <h1 class="hero-titulo mb-3">Sua chopeira funcionando <span class="destaque">sempre</span></h1>
+        <p class="hero-desc mb-4">Manutenção, instalação e higienização com agilidade e qualidade em Londrina - PR</p>
+        <a href="{% url 'tela_entrada' %}" class="btn btn-amarelo btn-hero">Solicitar Orçamento</a>
+    </div>
+</section>
+
+<section id="sobre" class="bloco py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Sobre Nós</h2>
+        <div class="card-servico p-4">
+            <p class="mb-0" style="line-height:1.8; font-size:1.05rem;">
+                A <strong style="color:#d4a300;">JB Chopeiras</strong> é especializada em manutenção,
+                instalação e higienização de chopeiras comerciais.
+                Atendemos bares, restaurantes, eventos e estabelecimentos do setor de alimentos e bebidas,
+                oferecendo soluções rápidas e eficientes para garantir o perfeito funcionamento do seu equipamento.
+                Nosso compromisso é proporcionar atendimento ágil, diagnóstico preciso e serviços realizados
+                com qualidade e responsabilidade.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="servicos" class="bloco py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Serviços</h2>
+        <div class="row g-3">
+
+            <div class="col-12 col-md-6">
+                <div class="card-servico p-4 h-100">
+                    <i class="ti ti-tool fs-2 icone-card mb-2 d-block"></i>
+                    <strong>MANUTENÇÃO PREVENTIVA</strong>
+                    <p class="mb-0 mt-2">Realizamos revisões periódicas para evitar falhas e prolongar a vida útil da sua chopeira.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card-servico p-4 h-100">
+                    <i class="ti ti-settings fs-2 icone-card mb-2 d-block"></i>
+                    <strong>MANUTENÇÃO CORRETIVA</strong>
+                    <p class="mb-0 mt-2">Identificamos e solucionamos problemas técnicos, como falhas na refrigeração, vazamentos e baixa pressão.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card-servico p-4 h-100">
+                    <i class="ti ti-droplet fs-2 icone-card mb-2 d-block"></i>
+                    <strong>HIGIENIZAÇÃO COMPLETA</strong>
+                    <p class="mb-0 mt-2">Limpeza profissional para garantir qualidade, sabor e segurança no consumo do chopp.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card-servico p-4 h-100">
+                    <i class="ti ti-map-pin fs-2 icone-card mb-2 d-block"></i>
+                    <strong>ATENDIMENTO NO LOCAL</strong>
+                    <p class="mb-0 mt-2">Atendemos com agilidade, garantindo menor tempo de equipamento parado.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'tela_entrada' %}" class="btn btn-amarelo btn-hero">
+                Solicitar Orçamento
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="localizacao" class="bloco py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Localização</h2>
+        <div class="card-servico p-3">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.5!2d-51.1733!3d-23.3045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.+S%C3%A3o+Jo%C3%A3o%2C+2935+-+Aritana%2C+Londrina+-+PR!5e0!3m2!1spt-BR!2sbr!4v1"
+                width="100%"
+                height="400"
+                style="border:0; border-radius:6px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <p class="mt-3 mb-0 text-center" style="color:#aaaaaa; font-size:0.9rem;">
+                <i class="ti ti-map-pin" style="color:#d4a300;"></i>
+                Av. São João, 2935 - Aritana, Londrina - PR
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer class="rodape py-4 text-center">
+    <p class="mb-1 fw-bold fs-5">JB Chopeiras</p>
+    <small>Contato: (43) 99999-9999 | Londrina - PR</small>
+</footer>
+
+</body>
+</html>

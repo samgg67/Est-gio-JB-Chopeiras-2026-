@@ -1,0 +1,226 @@
+:root {
+    --dourado: #d4a300;
+    --dourado-claro: #ffd54a;
+}
+
+body {
+    background: #111111;
+    font-family: Arial, sans-serif;
+}
+
+
+.topo {
+    background: #000000 !important;
+    border-bottom: 1px solid #d4a300;
+    height: 70px;
+    padding: 0;
+}
+
+.logo-wrap {
+    height: 70px;
+    width: 140px;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+    border-right: 1px solid #d4a300;
+    overflow: visible; 
+}
+
+.logo-wrap img {
+    height: 70px; 
+    width: auto;
+    object-fit: contain;
+}
+
+
+.menu-topo {
+    display: flex;
+    flex: 1;
+    height: 70px;
+}
+
+.menu-topo a {
+    flex: 1;
+    color: #d4a300;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #d4a300;
+    font-size: 16px;
+    padding: 0 0px; 
+    transition: 0.3s;
+}
+
+.menu-topo a:hover {
+    background: #1a1a1a;
+    color: #ffd54a;
+}
+
+
+.usuario-topo {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 48px; 
+}
+
+.bolinha-user {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #555555;
+    flex-shrink: 0;
+}
+
+.login-link {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.login-link:hover { color: #d4a300; }
+
+.nome-usuario {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+
+.link-sair {
+    color: #d4a300;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-sair:hover { color: #ffd54a; }
+
+.hero {
+    background: #000000;
+    border-bottom: 1px solid #d4a300;
+    min-height: 420px;
+    padding: 80px 20px;
+}
+
+.hero-sub {
+    color: #d4a300;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.hero-titulo {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+}
+
+.hero-titulo .destaque { color: #d4a300; }
+
+.hero-desc {
+    color: #aaaaaa;
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.btn-hero {
+    font-size: 1rem;
+    padding: 12px 30px;
+    transition: transform 0.3s;
+}
+
+.btn-hero:hover { transform: translateY(-2px); }
+
+.bloco {
+    background: #000000;
+    color: white;
+    border-bottom: 1px solid #d4a300;
+}
+
+.bloco h2 {
+    color: #ffc400;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-servico {
+    background: #000000;
+    border: 1px solid #d4a300;
+    border-radius: 16px;
+    line-height: 1.6;
+    color: white;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.card-servico:hover {
+    border-color: #ffd54a;
+    transform: translateY(-3px);
+}
+
+.icone-card { color: #d4a300; }
+
+.btn-amarelo {
+    background: #f2b600;
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-amarelo:hover {
+    background: #ffd54a;
+    color: #000000;
+    transform: translateY(-1px);
+}
+
+.rodape {
+    background: #000000;
+    color: #d4a300;
+    border-top: 1px solid #d4a300;
+}
+
+.rodape small { color: #aaaaaa; }
+
+@media (max-width: 992px) {
+    .topo { height: auto; }
+
+    .logo-wrap {
+        width: auto;
+        padding: 0 20px;
+        border-right: none;
+        height: 60px;
+    }
+
+    .menu-topo a {
+        height: auto;
+        padding: 12px 20px !important;
+        border-right: none;
+        border-bottom: 1px solid #d4a300;
+    }
+
+    .usuario-topo {
+        border-left: none;
+        border-top: 1px solid #d4a300;
+        height: auto;
+        padding: 12px 16px;
+    }
+
+    .hero-titulo { font-size: 2rem; }
+}

@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/detalhe_cliente.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Dados do Cliente</h1>
+
+    <p class="dado-cliente">
+        <strong>ID:</strong> {{ cliente.id }}
+    </p>
+
+    <p class="dado-cliente">
+        <strong>Nome:</strong> {{ cliente.nome }}
+    </p>
+
+    <p class="dado-cliente">
+        <strong>Email:</strong> {{ cliente.email }}
+    </p>
+
+    <p class="dado-cliente">
+        <strong>Telefone:</strong> {{ cliente.telefone }}
+    </p>
+
+    <p class="dado-cliente">
+        <strong>Endereço:</strong> {{ cliente.endereco }}
+    </p>
+
+    <a href="{% url 'clientesPage' %}" class="btn-voltar">
+        Voltar
+    </a>
+
+</div>
+
+</body>
+</html>

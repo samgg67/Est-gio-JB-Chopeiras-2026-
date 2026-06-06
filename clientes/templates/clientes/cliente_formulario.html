@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{% static 'css/formularioclientes.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ titulo }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+
+            <div class="acoes-form">
+                <a href="{% url 'clientesPage' %}" class="btn-voltar">Voltar</a>
+                <button type="submit">Salvar</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

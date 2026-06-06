@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #000000;
+    margin: 0;
+    padding: 30px;
+    color: white;
+}
+
+.modal-content {
+    background: #111111;
+    color: white;
+    border: 1px solid #f39c12;
+    border-radius: 12px;
+}
+
+.modal-header,
+.modal-footer {
+    border-color: #333;
+}
+
+.modal-title {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.card-dados {
+    background: #1b1b1b;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.linha {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.linha strong {
+    color: #f39c12;
+}
+
+.btn-excluir {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+}
+
+.btn-excluir:hover {
+    background-color: #a93226;
+    color: white;
+}
+
+.btn-cancelar {
+    background-color: #444;
+    color: white;
+    border: none;
+}
+
+.btn-cancelar:hover {
+    background-color: #666;
+    color: white;
+}
+
+.fechar-modal {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.fechar-modal:hover {
+    color: #f39c12;
+}
