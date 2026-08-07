@@ -33,6 +33,13 @@
         <strong>Endereço:</strong> {{ cliente.endereco }}
     </p>
 
+    <p class="dado-cliente">
+        <strong>Tempo de Fidelidade:</strong> {{ cliente.tempo_de_fidelidade }} anos
+    </p>
+
+    <p class="dado-cliente">
+        <strong>Serviços Realizados:</strong> {{ cliente.servicos_realizados }}
+    </p>
     <a href="{% url 'clientesPage' %}" class="btn-voltar">
         Voltar
     </a>

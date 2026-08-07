@@ -93,7 +93,7 @@
             </div>
 
             <div class="col-12 col-md-6">
-                <div class="card-servico p-4 h-100">
+                <div class="card-servico p-4 h-100">    
                     <i class="ti ti-map-pin fs-2 icone-card mb-2 d-block"></i>
                     <strong>ATENDIMENTO NO LOCAL</strong>
                     <p class="mb-0 mt-2">Atendemos com agilidade, garantindo menor tempo de equipamento parado.</p>
@@ -103,12 +103,16 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="{% url 'tela_entrada' %}" class="btn btn-amarelo btn-hero">
-                Solicitar Orçamento
-            </a>
-        </div>
-    </div>
-</section>
+    {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}" class="btn btn-amarelo btn-hero">
+            Solicitar Orçamento
+        </a>
+    {% else %}
+        <a href="{% url 'tela_entrada' %}" class="btn btn-amarelo btn-hero">
+            Solicitar Orçamento
+        </a>
+    {% endif %}
+</div>
 
 <section id="localizacao" class="bloco py-5">
     <div class="container">
@@ -133,7 +137,7 @@
 
 <footer class="rodape py-4 text-center">
     <p class="mb-1 fw-bold fs-5">JB Chopeiras</p>
-    <small>Contato: (43) 99999-9999 | Londrina - PR</small>
+    <small>Contato: (43) 98402-2769 | Londrina - PR</small>
 </footer>
 
 </body>
