@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - JB Chopeiras</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    >
+</head>
+
+<body>
+    <div class="pagina">
+        <div class="miolo">
+            <aside class="menu-lateral">
+                <div class="sidebar-logo">
+                    <a href="{% url 'home' %}">
+                        <img
+                            src="{% static 'images/logo.png' %}"
+                            alt="Logo JB Chopeiras"
+                            class="logo"
+                        >
+                    </a>
+                </div>
+                
+                <nav class="sidebar-nav">
+
+    <a href="{% url 'home' %}" class="item-menu">
+        Início
+    </a>
+
+    <a href="{% url 'dashboard' %}" class="item-menu ativo">
+        Dashboard
+    </a>
+
+    <a href="{% url 'servicosPage' %}" class="item-menu">
+        Solicitações
+    </a>
+
+    <a href="{% url 'clientesPage' %}" class="item-menu">
+        Clientes
+    </a>
+
+    <a href="#" class="item-menu">
+        Relatórios
+    </a>
+
+    <div class="menu-divisor"></div>
+
+    <a href="#" class="item-menu">
+        Configurações
+    </a>
+
+</nav>
+
+                <div class="sidebar-usuario">
+                    <div class="bolinha-user"></div>
+                    <div class="sidebar-usuario-info">
+                        <span class="sidebar-usuario-nome">
+                            {{ user.username }}
+                        </span>
+                        <span class="sidebar-usuario-cargo">
+                            Administrador
+                        </span>
+
+                    </div>
+
+                    <a href="{% url 'sair' %}">
+                        <i
+                            class="ti ti-logout sidebar-logout"
+                            title="Sair"
+                        ></i>
+                    </a>
+
+                </div>
+
+            </aside>
+
+            <main class="conteudo">
+                <h1 class="titulo">Dashboard</h1>
+                <section class="cards-dashboard">
+                    <div class="card-dashboard">
+                        <span class="card-titulo">
+                            Solicitações Totais
+                        </span>
+
+                        <div class="card-numero">
+                            <span class="quadrado azul"></span>
+                            <span>
+                                {{ pedidos_totais }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-dashboard">
+
+                        <span class="card-titulo">
+                            Em atendimento
+                        </span>
+
+                        <div class="card-numero">
+                            <span class="quadrado amarelo"></span>
+                            <span>
+                                {{ em_atendimento }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-dashboard">
+                        <span class="card-titulo">
+                            Finalizados
+                        </span>
+
+                        <div class="card-numero">
+                            <span class="quadrado verde"></span>
+                            <span>
+                                {{ finalizados }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-dashboard">
+                        <span class="card-titulo">
+                            Pendentes
+                        </span>
+
+                        <div class="card-numero">
+                            <span class="quadrado vermelho"></span>
+
+                            <span>
+                                {{ pendentes }}
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ultimas">
+                    <h2>Últimas solicitações</h2>
+                    <div class="quadro-tabela">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Protocolo</th>
+                                    <th>Nome do cliente</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for servico in ultimas_solicitacoes %}
+                                    <tr>
+                                        <td>
+                                            <a
+                                                href="{% url 'editar_servico' servico.id %}"
+                                                class="link-protocolo"
+                                            >
+                                                #{{ servico.protocolo }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{ servico.nome }}
+                                        </td>
+                                        <td>
+                                            {{ servico.get_status_display }}
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="3">
+                                            Nenhuma solicitação cadastrada.
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

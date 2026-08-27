@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formulário - JB Chopeiras</title>
+
+    <link rel="stylesheet" href="{% static 'css/formulario_principal.css' %}">
+</head>
+
+<body>
+    <header class="topo d-flex">
+        <div class="logo-wrap">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}", alt="JB Chopeiras">
+            </a>
+        </div>
+
+        <nav class="menu-topo">
+            <a href="{% url 'home' %}"> Home </a>
+            <a href="#"> Dúvidas </a>
+            <a href="{% url 'preencher_formulario' %}"> Formulário </a>
+            <a href="#"> Serviços </a>
+        </nav>
+
+        <div class="usuario-topo">
+            <a href="{% url 'tela_entrada' %}" class="login-link"> Login/Registrar <span class="bolinha-user"></span> </a>
+        </div>
+    </header>
+
+
+    <main class="area-formulario">
+        <section class="box-formulario">
+            <h1>Formulário</h1>
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="campo">
+                    <label for="{{ form.nome.id_for_label }}"> Nome * </label>
+                    {{ form.nome }}
+                    {% for erro in form.nome.errors %}
+                        <span class="erro"> {{ erro }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="campo">
+                    <label for="{{ form.email.id_for_label }}"> Email * </label>
+                    {{ form.email }}
+                    {% for erro in form.email.errors %}
+                        <span class="erro"> {{ erro }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="campo">
+                    <label for="{{ form.telefone.id_for_label }}"> Telefone * </label>
+                    {{ form.telefone }}
+                    {% for erro in form.telefone.errors %}
+                        <span class="erro"> {{ erro }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="campo">
+                    <label for="{{ form.problema.id_for_label }}"> Problema * </label>
+                    {{ form.problema }}
+                    {% for erro in form.problema.errors %}
+                        <span class="erro"> {{ erro }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="campo">
+                    <label for="{{ form.endereco.id_for_label }}"> Endereço * </label>
+                    {{ form.endereco }}
+                    {% for erro in form.endereco.errors %}
+                        <span class="erro"> {{ erro }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="campo">
+                    <label for="{{ form.explicacao.id_for_label }}"> Explicação * </label>
+                    {{ form.explicacao }}
+                    {% for erro in form.explicacao.errors %}
+                        <span class="erro"> {{ erro }} </span>
+                    {% endfor %}
+                </div>
+
+                <div class="area-botao">
+                    <button type="submit", class="btn-enviar" >
+                        ENVIAR
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-conteudo">
+            <div class="footer-redes">
+                <h3>Mais sobre nós</h3>
+                <div class="redes">
+                    <a href="#">F</a>
+                    <a href="#">I</a>
+                    <a href="#">W</a>
+                    <a href="#">@</a>
+                </div>
+            </div>
+
+            <div class="footer-centro">
+                <h3>JB Chopeiras</h3>
+                <img src="{% static 'images/logo.png' %}", alt="JB Chopeiras", class="logo-footer">
+                <p>(43) 3039-0738</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="{% url 'home' %}"> Home </a>
+                <a href="#"> Dúvidas </a>
+                <a href="{% url 'preencher_formulario' %}"> Formulário </a>
+                <a href="#"> Serviços </a>
+                <a href="#"> Localização </a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

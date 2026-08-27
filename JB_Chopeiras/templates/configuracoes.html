@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        Configurações - JB Chopeiras
+    </title>
+
+    <link rel="stylesheet", href="{% static 'css/configuracoes.css' %}">
+
+    <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+
+<div class="pagina">
+
+    <div class="miolo">
+
+        <aside class="menu-lateral">
+
+            <div class="sidebar-logo">
+
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}", alt="Logo JB Chopeiras", class="logo" ></a>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a href="{% url 'dashboard' %}" class="item-menu"><i class="ti ti-layout-dashboard"></i> Dashboard </a>
+                <a href="{% url 'servicosPage' %}". class="item-menu"><i class="ti ti-file-description"></i> Solicitações </a>
+                <a href="{% url 'clientesPage' %}", class="item-menu"><i class="ti ti-users"></i> Clientes </a>
+                <a href="{% url 'relatorios' %}", class="item-menu"> <i class="ti ti-chart-bar"></i> Relatórios </a>
+                <a href="{% url 'configuracoes' %}", class="item-menu ativo"><i class="ti ti-settings"></i> Configurações</a>
+
+            </nav>
+
+
+            <div class="sidebar-usuario">
+
+                <div class="bolinha-user"></div>
+
+                <div class="sidebar-usuario-info">
+
+                    <span class="sidebar-usuario-nome"> {{ user.username }} </span>
+                    <span class="sidebar-usuario-cargo"> Administrador </span>
+
+                </div>
+
+
+                <a href="{% url 'sair' %}", class="sidebar-logout", title="Sair"><i class="ti ti-logout"></i> </a>
+
+            </div>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <h1 class="titulo"> Configurações </h1>
+
+
+            {% if mensagem %}
+
+                <div class="mensagem"> {{ mensagem }} </div>
+
+            {% endif %}
+
+
+            <div class="config-grid">
+
+                <section class="bloco-config">
+
+                    <h2> Dados da empresa </h2>
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <input type="hidden", name="tipo_form", value="empresa">
+
+
+                        <div class="campo">
+
+                            <label> Nome da empresa </label>
+
+                            <input type="text", name="nome_empresa", value="{{ configuracao.nome_empresa }}">
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label> Telefone </label>
+
+                            <input type="text", name="telefone", value="{{ configuracao.telefone }}">
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label> Email </label>
+
+                            <input type="email", name="email" value="{{ configuracao.email }}">
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label> Endereço </label>
+
+                            <input type="text", name="endereco", value="{{ configuracao.endereco }}">
+
+                        </div>
+
+
+                        <button type="submit", class="botao-salvar"> Salvar dados </button>
+
+                    </form>
+
+                </section>
+
+                <section class="bloco-config">
+
+                    <h2> Alterar senha </h2>
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <input type="hidden", name="tipo_form", value="senha">
+
+                        <div class="campo">
+
+                            <label> Senha atual </label>
+                            <input type="password" name="senha_atual">
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label> Nova senha </label>
+
+                            <input type="password", name="nova_senha">
+
+                        </div>
+
+                        <div class="campo">
+
+                            <label> Repetir nova senha </label>
+
+                            <input type="password", name="confirmar_senha">
+
+                        </div>
+
+
+                        <button type="submit", class="botao-salvar"> Alterar senha</button>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

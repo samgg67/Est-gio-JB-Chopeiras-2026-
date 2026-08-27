@@ -1,68 +1,85 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Solicitações - JB Chopeiras</title>
     <link rel="stylesheet" href="{% static 'css/servicos.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    >
 </head>
+
 <body>
+
 <div class="pagina">
- 
     <div class="miolo">
- 
         <aside class="menu-lateral">
-            
             <div class="sidebar-logo">
-                <a href="http://localhost:8000/home/">
-                    <img src="{% static 'images/logo.png' %}" alt="Logo JB Chopeiras" class="logo">
+                <a href="{% url 'home' %}">
+                    <img
+                        src="{% static 'images/logo.png' %}"
+                        alt="Logo JB Chopeiras"
+                        class="logo"
+                    >
                 </a>
             </div>
- 
             <nav class="sidebar-nav">
-                <a href="http://localhost:8000/" class="item-menu">
-                    <i class="ti ti-home"></i> Início
+                <a href="{% url 'home' %}" class="item-menu">
+                    Início
                 </a>
-                <a href="#" class="item-menu">
-                    <i class="ti ti-layout-dashboard"></i> Dashboard
+                <a href="{% url 'dashboard' %}" class="item-menu">
+                    Dashboard
                 </a>
-                <a href="#" class="item-menu ativo">
-                    <i class="ti ti-clipboard-list"></i> Solicitações
+                <a href="{% url 'servicosPage' %}" class="item-menu ativo">
+                    Solicitações
                 </a>
                 <a href="{% url 'clientesPage' %}" class="item-menu">
-                    <i class="ti ti-users"></i> Clientes
+                    Clientes
                 </a>
-
                 <a href="#" class="item-menu">
-                    <i class="ti ti-chart-bar"></i> Relatórios
+                    Relatórios
                 </a>
- 
                 <div class="menu-divisor"></div>
- 
                 <a href="#" class="item-menu">
-                    <i class="ti ti-settings"></i> Configurações
+                    Configurações
                 </a>
             </nav>
- 
             <div class="sidebar-usuario">
                 <div class="bolinha-user"></div>
                 <div class="sidebar-usuario-info">
-                    <span class="sidebar-usuario-nome">Julio Cesar</span>
-                    <span class="sidebar-usuario-cargo">Administrador</span>
+                    <span class="sidebar-usuario-nome">
+                        {{ user.username }}
+                    </span>
+                    <span class="sidebar-usuario-cargo">
+                        Administrador
+                    </span>
                 </div>
-                <i class="ti ti-logout sidebar-logout" title="Sair"></i>
+                <a href="{% url 'sair' %}">
+                    <i
+                        class="ti ti-logout sidebar-logout"
+                        title="Sair"
+                    ></i>
+                </a>
             </div>
- 
         </aside>
- 
+
         <main class="conteudo">
-            <h1 class="titulo">Solicitações</h1>
- 
+            <h1 class="titulo">
+                Solicitações
+            </h1>
             <div class="topo-conteudo">
-                <a href="{% url 'criar_servico' %}" class="btn btn-criar">Criar Solicitação</a>
+                <a
+                    href="{% url 'criar_servico' %}"
+                    class="btn btn-criar"
+                >
+                    Criar Solicitação
+                </a>
             </div>
- 
+
             <div class="quadro-tabela">
                 <table>
                     <thead>
@@ -78,37 +95,65 @@
                             <th>Ações</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for servico in servicos %}
                         <tr>
-                            <td>{{ servico.protocolo }}</td>
-                            <td>{{ servico.nome }}</td>
-                            <td>{{ servico.email }}</td>
-                            <td>{{ servico.telefone }}</td>
-                            <td>{{ servico.endereco }}</td>
-                            <td>{{ servico.problema }}</td>
-                            <td>{{ servico.get_status_display }}</td>
-                            <td>{{ servico.notas }}</td>
+                            <td>
+                                {{ servico.protocolo }}
+                            </td>
+
+                            <td>
+                                {{ servico.nome }}
+                            </td>
+
+                            <td>
+                                {{ servico.email }}
+                            </td>
+
+                            <td>
+                                {{ servico.telefone }}
+                            </td>
+
+                            <td>
+                                {{ servico.endereco }}
+                            </td>
+
+                            <td>
+                                {{ servico.problema }}
+                            </td>
+
+                            <td>
+                                {{ servico.get_status_display }}
+                            </td>
+
+                            <td>
+                                {{ servico.notas }}
+                            </td>
                             <td>
                                 <div class="acoes">
-                                    <a href="{% url 'editar_servico' servico.id %}" class="btn btn-editar">Editar</a>
-                                    <a href="{% url 'excluir_servico' servico.id %}" class="btn btn-excluir">Excluir</a>
+                                    <a
+                                        href="{% url 'editar_servico' servico.id %}"
+                                        class="btn btn-editar"
+                                    >
+                                        Editar
+                                    </a>
+                                    <a
+                                        href="{% url 'excluir_servico' servico.id %}"
+                                        class="btn btn-excluir"
+                                    >
+                                        Excluir
+                                    </a>
                                 </div>
                             </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="9">Nenhuma solicitação cadastrada.</td>
+                            <td colspan="9">
+                                Nenhuma solicitação cadastrada.
+                            </td>
                         </tr>
                         {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </main>
- 
-    </div>
- 
 </div>
- 
-
- 
+</body>
+</html>

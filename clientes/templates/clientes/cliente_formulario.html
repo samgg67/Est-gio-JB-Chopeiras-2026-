@@ -2,26 +2,191 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
-    <link rel="stylesheet" href="{% static 'css/formularioclientes.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/formularioclientes.css' %}"
+    >
 </head>
+
 <body>
+
     <div class="container">
+
         <h1>{{ titulo }}</h1>
 
-        <form method="POST">
+        <form method="POST" novalidate>
+
             {% csrf_token %}
-            
-            {{ form.as_p }}
+
+            <p>
+                <label for="{{ form.nome.id_for_label }}">  Nome * </label>
+
+                {{ form.nome }}
+
+                {% for erro in form.nome.errors %}
+                    <span
+                        class="erro"
+                        style="
+                            display: block;
+                            color: #ff4d4d !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-top: 7px;
+                        "
+                    >
+                        {{ erro }}
+                    </span>
+                {% endfor %}
+            </p>
+
+
+            <p>
+                <label for="{{ form.email.id_for_label }}"> Email * </label>
+
+                {{ form.email }}
+
+                {% for erro in form.email.errors %}
+                    <span
+                        class="erro"
+                        style="
+                            display: block;
+                            color: #ff4d4d !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-top: 7px;
+                        "
+                    >
+                        {{ erro }}
+                    </span>
+                {% endfor %}
+            </p>
+
+            <p>
+                <label for="{{ form.telefone.id_for_label }}">
+                    Telefone *
+                </label>
+
+                {{ form.telefone }}
+
+                {% for erro in form.telefone.errors %}
+                    <span
+                        class="erro"
+                        style="
+                            display: block;
+                            color: #ff4d4d !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-top: 7px;
+                        "
+                    >
+                        {{ erro }}
+                    </span>
+                {% endfor %}
+            </p>
+
+            <p>
+                <label for="{{ form.endereco.id_for_label }}"> Endereço *  </label>
+
+                {{ form.endereco }}
+
+                {% for erro in form.endereco.errors %}
+                    <span
+                        class="erro"
+                        style="
+                            display: block;
+                            color: #ff4d4d !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-top: 7px;
+                        "
+                    >
+                        {{ erro }}
+                    </span>
+                {% endfor %}
+            </p>
+
+            <p>
+                <label for="{{ form.tempo_de_fidelidade.id_for_label }}"> Tempo de fidelidade </label>
+
+                {{ form.tempo_de_fidelidade }}
+
+                {% for erro in form.tempo_de_fidelidade.errors %}
+                    <span
+                        class="erro"
+                        style="
+                            display: block;
+                            color: #ff4d4d !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-top: 7px;
+                        "
+                    >
+                        {{ erro }}
+                    </span>
+                {% endfor %}
+            </p>
+
+
+            <p>
+                <label for="{{ form.servicos_realizados.id_for_label }}"> Serviços realizados </label>
+
+                {{ form.servicos_realizados }}
+
+                {% for erro in form.servicos_realizados.errors %}
+                    <span
+                        class="erro"
+                        style="
+                            display: block;
+                            color: #ff4d4d !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-top: 7px;
+                        "
+                    >
+                        {{ erro }}
+                    </span>
+                {% endfor %}
+            </p>
+
+            {% if form.non_field_errors %}
+
+                <div
+                    style="
+                        color: #ff4d4d !important;
+                        background: #3a0000;
+                        border: 1px solid #ff4d4d;
+                        border-radius: 6px;
+                        padding: 10px;
+                        margin-bottom: 15px;
+                        font-size: 14px;
+                        font-weight: bold;
+                    "
+                >
+
+                    {% for erro in form.non_field_errors %}
+                        <div style="color: #ff4d4d !important;"> {{ erro }} </div>
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
 
             <div class="acoes-form">
-                <a href="{% url 'clientesPage' %}" class="btn-voltar">Voltar</a>
-                <button type="submit">Salvar</button>
+
+                <a href="{% url 'clientesPage' %}", class="btn-voltar"> Voltar </a>
+                <button type="submit"> Salvar </button>
+
             </div>
 
         </form>
+
     </div>
+
 </body>
+
 </html>

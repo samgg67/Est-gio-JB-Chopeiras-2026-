@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gerar Relatório - JB Chopeiras</title>
+    <link rel="stylesheet", href="{% static 'css/gerar_relatorio.css' %}">
+    <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+<div class="pagina">
+
+    <aside class="menu-lateral">
+        <div class="logo-menu">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}", alt="JB Chopeiras">
+            </a>
+
+        </div>
+        <nav class="menu-nav">
+            <a href="{% url 'dashboard' %}">
+                <i class="ti ti-layout-dashboard"></i> Dashboard
+            </a>
+
+            <a href="{% url 'servicosPage' %}">
+                <i class="ti ti-file-description"></i> Solicitações
+            </a>
+
+            <a href="{% url 'clientesPage' %}">
+                <i class="ti ti-users"></i> Clientes
+            </a>
+
+            <a href="{% url 'relatorios' %}", class="ativo">
+                <i class="ti ti-chart-bar"></i> Relatórios
+            </a>
+        </nav>
+    </aside>
+
+    <main class="conteudo">
+        <div class="topo">
+            <div>
+                <p class="subtitulo"> Administração </p>
+                <h1> Gerar Relatório Mensal </h1>
+            </div>
+
+
+            <a href="{% url 'relatorios' %}", class="voltar">
+                <i class="ti ti-arrow-left"></i> Voltar
+            </a>
+        </div>
+
+        <section class="card">
+            <h2> Selecione o período </h2>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="campos">
+                    <div class="campo">
+                        <label> Mês </label>
+                        <select name="mes", required>
+                            <option value=""> Selecione </option>
+
+                            {% for numero, nome in meses %}
+                                <option value="{{ numero }}", {% if mes_selecionado == numero|stringformat:"s" %}, selected {% endif %}> {{ nome }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label> Ano </label>
+                        <select name="ano", required>
+                            <option value=""> Selecione </option>
+                            {% for ano in anos %}
+                                <option value="{{ ano }}" {% if ano_selecionado == ano|stringformat:"s" %} selected {% endif %} > {{ ano }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit", class="gerar" >
+                        <i class="ti ti-file-report"></i> Gerar relatório </button>
+                </div>
+            </form>
+        </section>
+
+        {% if relatorio %}
+
+            <section class="relatorio">
+                <div class="titulo-relatorio">
+                    <div>
+                        <p> JB Chopeiras </p>
+                        <h2> Relatório Mensal </h2>
+                    </div>
+
+                    <div class="periodo"> {{ relatorio.mes }} / {{ relatorio.ano }}
+                    </div>
+                </div>
+
+                <div class="indicadores">
+                    <div class="indicador">
+                        <span> Total </span>
+                        <strong> {{ relatorio.total }} </strong>
+                    </div>
+
+                    <div class="indicador">
+                        <span> Pendentes </span>
+                        <strong> {{ relatorio.pendentes }} </strong>
+                    </div>
+
+
+                    <div class="indicador">
+                        <span> Em andamento </span>
+                        <strong> {{ relatorio.andamento }} </strong>
+                    </div>
+
+
+                    <div class="indicador">
+                        <span> Finalizados </span>
+                        <strong> {{ relatorio.finalizados }} </strong>
+                    </div>
+
+                    <div class="indicador">
+                        <span> Clientes </span>
+                        <strong> {{ relatorio.total_clientes }} </strong>
+                    </div>
+
+                </div>
+
+                <div class="tabela-area">
+
+                    <h3> Solicitações do período </h3>
+                    {% if solicitacoes %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th> Data </th> <th> Cliente </th> <th> Email </th> <th> Problema </th> <th> Endereço </th> <th> Status </th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                {% for solicitacao in solicitacoes %}
+                                    <tr>
+                                        <td> {{ solicitacao.data_criacao|date:"d/m/Y" }} </td> 
+                                        <td> {{ solicitacao.nome }} </td> 
+                                        <td> {{ solicitacao.email }} </td><td> {{ solicitacao.problema }} </td> 
+                                        <td> {{ solicitacao.endereco }} </td>
+                                        <td> {% if solicitacao.status == 'pendente' %}
+                                                <span class="status pendente"> Pendente </span>
+                                            {% elif solicitacao.status == 'andamento' %}
+                                                <span class="status andamento"> Em andamento </span>
+                                            {% else %}
+                                                <span class="status finalizado"> Finalizado </span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="sem-dados">
+                            <i class="ti ti-file-off"></i>
+                            <p> Nenhuma solicitação encontrada neste período. </p>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+        {% endif %}
+    </main>
+</div>
+
+</body>
+
+</html>

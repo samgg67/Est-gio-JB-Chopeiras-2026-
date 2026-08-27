@@ -16,22 +16,15 @@
 
         <h4>Confirmar Exclusão</h4>
 
-        <p>
-            Tem certeza que deseja excluir o cliente
-            <strong>{{ cliente.nome }}</strong>?
-        </p>
+        <p> Tem certeza que deseja excluir o cliente <strong>{{ cliente.nome }}</strong>? </p>
 
         <div class="botoes-exclusao">
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-excluir-custom">
-                    Sim, excluir
-                </button>
+                <button type="submit" class="btn btn-excluir-custom"> Sim, excluir </button>
             </form>
 
-            <a href="{% url 'clientesPage' %}" class="btn btn-dourado">
-                Cancelar
-            </a>
+            <a href="{% url 'clientesPage' %}" class="btn btn-dourado"> Cancelar </a>
         </div>
 
     </div>

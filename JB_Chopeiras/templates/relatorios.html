@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Relatórios - JB Chopeiras</title>
+    <link rel="stylesheet", href="{% static 'css/relatorios.css' %}">
+    <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+<div class="pagina">
+    <div class="miolo">
+        <aside class="menu-lateral">
+            <div class="sidebar-logo">
+                <a href="{% url 'home' %}"> <img src="{% static 'images/logo.png' %}", alt="Logo JB Chopeiras", class="logo"> </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{% url 'dashboard' %}", class="item-menu"> <i class="ti ti-layout-dashboard"></i> Dashboard </a>
+                <a href="{% url 'servicosPage' %}", class="item-menu"> <i class="ti ti-file-description"></i> Solicitações </a>
+                <a href="{% url 'clientesPage' %}", class="item-menu"> <i class="ti ti-users"></i> Clientes </a>
+                <a href="{% url 'relatorios' %}", class="item-menu ativo"> <i class="ti ti-chart-bar"></i> Relatórios</a>
+            </nav>
+
+            <div class="sidebar-usuario">
+                <div class="bolinha-user"></div>
+                <div class="sidebar-usuario-info">
+                    <span class="sidebar-usuario-nome"> {{ user.username }} </span>
+                    <span class="sidebar-usuario-cargo"> Administrador </span>
+                </div>
+
+                <a href="{% url 'sair' %}", class="sidebar-logout", title="Sair"><i class="ti ti-logout"></i></a>
+            </div>
+        </aside>
+
+        <main class="conteudo">
+            <h1 class="titulo"> Relatório Mensal </h1>
+            <div class="acoes">
+                <a href="{% url 'gerar_relatorio' %}" class="botao"> <i class="ti ti-file-plus"></i> Gerar relatório </a>
+                <a href="{% url 'visualizar_relatorios' %}", class="botao"> <i class="ti ti-eye"></i> Visualizar relatórios</a>
+            </div>
+
+            <form method="GET", class="filtros">
+                <div class="campo">
+                    <label> Mês </label>
+                    <select name="mes">
+                        <option value=""> Todos </option>
+                        {% for mes in meses %}
+                            <option value="{{ mes }}", {% if mes_selecionado == mes|stringformat:"s" %}, selected {% endif %}>
+                                {% if mes == 1 %}Janeiro{% endif %}
+                                {% if mes == 2 %}Fevereiro{% endif %}
+                                {% if mes == 3 %}Março{% endif %}
+                                {% if mes == 4 %}Abril{% endif %}
+                                {% if mes == 5 %}Maio{% endif %}
+                                {% if mes == 6 %}Junho{% endif %}
+                                {% if mes == 7 %}Julho{% endif %}
+                                {% if mes == 8 %}Agosto{% endif %}
+                                {% if mes == 9 %}Setembro{% endif %}
+                                {% if mes == 10 %}Outubro{% endif %}
+                                {% if mes == 11 %}Novembro{% endif %}
+                                {% if mes == 12 %}Dezembro{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label> Ano </label>
+                    <select name="ano">
+                        <option value=""> Todos </option>
+                        {% for ano in anos %}
+                            <option value="{{ ano }}", {% if ano_selecionado == ano|stringformat:"s" %}, selected, {% endif %}> {{ ano }} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit">
+                    <i class="ti ti-filter"></i> Filtrar </button>
+            </form>
+
+            <section class="graficos">
+                <div class="card-grafico">
+                    <h2> Serviços realizados </h2>
+                    {% if grafico_servicos %}
+                        <img src="data:image/png;base64,{{ grafico_servicos }}", alt="Gráfico de serviços">
+                    {% else %}
+
+                        <div class="sem-dados">
+                            <i class="ti ti-chart-bar-off"></i>
+                            <p>Nenhum dado encontrado, para esse período.</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-grafico">
+                    <h2> Total de clientes </h2>
+                    {% if grafico_clientes %}
+                        <img src="data:image/png;base64,{{ grafico_clientes }}", alt="Gráfico de clientes">
+                    {% else %}
+                        <div class="sem-dados">
+                            <i class="ti ti-users-minus"></i>
+                            <p> Nenhum dado encontrado, para esse período.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

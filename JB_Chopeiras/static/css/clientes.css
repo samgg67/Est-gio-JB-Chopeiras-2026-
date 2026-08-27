@@ -211,7 +211,7 @@ body {
 .btn-editar {
     background: #2563eb;
     color: white;
-    padding: 6px 16px;
+    padding: 6px 10px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -228,7 +228,7 @@ body {
 .btn-excluir {
     background: #dc2626;
     color: white;
-    padding: 6px 6px;
+    padding: 6px 10px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -270,7 +270,7 @@ td {
     text-align: center;
     vertical-align: middle;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.5;
     background: #111111;
 }

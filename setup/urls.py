@@ -9,6 +9,5 @@ router.register('servicos', ServicoViewSet, basename='servicos')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('JB_Chopeiras.urls')),
-    path('', include('servicos.urls')),
     path('api/', include(router.urls)),
 ]

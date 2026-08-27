@@ -15,11 +15,11 @@ body {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
-    background: #000;
+    background: #000000;
     border: 1px solid #FFC107;
     border-radius: 16px;
     padding: 35px;
-    box-shadow: 0 0 20px rgba(0,0,0,.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 h1 {
@@ -29,6 +29,7 @@ h1 {
     font-size: 32px;
 }
 
+
 form {
     width: 100%;
 }
@@ -37,12 +38,13 @@ form p {
     margin-bottom: 18px;
 }
 
+
 label {
     display: block;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
-    margin-bottom: 8px;
     font-size: 15px;
+    margin-bottom: 8px;
 }
 
 input,
@@ -53,7 +55,8 @@ textarea {
     border: 1px solid #FFC107;
     border-radius: 8px;
     background: #111111;
-    color: white;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
     font-size: 15px;
     transition: 0.3s;
 }
@@ -71,39 +74,55 @@ textarea {
     resize: vertical;
 }
 
-button[type="submit"] {
-    background: #FFC107;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-size: 15px;
+.erro {
+    display: block !important;
+    margin-top: 7px !important;
+    color: #ff4d4d !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+
+.erro * {
+    color: #ff4d4d !important;
+}
+
+.erro-geral {
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    background: #3a0000;
+    border: 1px solid #aa2222;
+    border-radius: 6px;
+    color: #ffb3b3 !important;
+}
+
+.errorlist {
+    list-style: none;
+    margin: 7px 0 10px 0;
+    padding: 8px 10px;
+    background: #3a0000;
+    border: 1px solid #aa2222;
+    border-radius: 6px;
+    color: #ff4d4d !important;
+    font-size: 14px;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
 }
 
-button[type="submit"]:hover {
-    background: #f8e292;
+.errorlist li {
+    color: #ff4d4d !important;
 }
 
-.btn-voltar {
-    display: inline-block;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding: 12px 24px;
-    background: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: 0.3s;
+.errorlist li * {
+    color: #ff4d4d !important;
 }
 
-.btn-voltar:hover {
-    background: #555;
-    color: white;
+form .erro,
+form .erro *,
+form .errorlist,
+form .errorlist *,
+form span.erro {
+    color: #ff4d4d !important;
 }
+
 
 .helptext {
     display: block;
@@ -112,32 +131,46 @@ button[type="submit"]:hover {
     font-size: 13px;
 }
 
-.errorlist {
-    list-style: none;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    background: #3a0000;
-    border: 1px solid #aa2222;
-    color: #ffb3b3;
-}
 
 .acoes-form {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 25px;
-    width: 100%;
 }
 
-.acoes-form .btn-voltar {
-    margin: 0;
+button[type="submit"] {
+    background: #FFC107;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.acoes-form button[type="submit"] {
-    margin: 0;
-    margin-left: auto;
+button[type="submit"]:hover {
+    background: #f8e292;
 }
+
+.btn-voltar {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #333333;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background: #555555;
+    color: #ffffff;
+}
+
 
 @media (max-width: 768px) {
 

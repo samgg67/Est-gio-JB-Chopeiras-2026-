@@ -27,14 +27,16 @@ class Servico(models.Model):
     email = models.EmailField(max_length=50)
 
     telefone = models.CharField(
-        max_length=20,
-        validators=[
-            RegexValidator(
-                regex=r'^\d+$',
-                message='O telefone deve conter apenas números.'
-            )
-        ]
-    )
+    max_length=20,
+    blank=True,
+    default='',
+    validators=[
+        RegexValidator(
+            regex=r'^\d+$',
+            message='O telefone deve conter apenas números.'
+        )
+    ]
+)
 
     endereco = models.CharField(max_length=50)
     problema = models.CharField(max_length=20)

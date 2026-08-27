@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title> Visualizar Relatórios - JB Chopeiras </title>
+    <link rel="stylesheet", href="{% static 'css/visualizar_relatorios.css' %}">
+    <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+
+<body>
+<div class="pagina">
+    <div class="miolo">
+        <aside class="menu-lateral">
+            <div class="sidebar-logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.png' %}", alt="Logo JB Chopeiras", class="logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{% url 'dashboard' %}", class="item-menu"> <i class="ti ti-layout-dashboard"></i> Dashboard </a>
+                <a href="{% url 'servicosPage' %}", class="item-menu"> <i class="ti ti-file-description"></i> Solicitações </a>
+                <a href="{% url 'clientesPage' %}" class="item-menu"> <i class="ti ti-users"></i> Clientes </a>
+                <a href="{% url 'relatorios' %}", class="item-menu ativo"> <i class="ti ti-chart-bar"></i> Relatórios </a>
+
+            </nav>
+
+
+            <div class="sidebar-usuario">
+                <div class="bolinha-user"></div>
+                <div class="sidebar-usuario-info">
+                    <span class="sidebar-usuario-nome"> {{ user.username }} </span>
+                    <span class="sidebar-usuario-cargo"> Administrador </span> </div>
+                <a href="{% url 'sair' %}" class="sidebar-logout"> <i class="ti ti-logout"></i> </a>
+            </div>
+        </aside>
+
+        <main class="conteudo">
+            <div class="cabecalho">
+                <h1> Relatórios Gerados </h1>
+                <a href="{% url 'gerar_relatorio' %}", class="novo-relatorio"> <i class="ti ti-plus"></i> Novo relatório </a>
+            </div>
+
+            {% if relatorios %}
+                <div class="lista-relatorios">
+                    {% for relatorio in relatorios %}
+                        <div class="card-relatorio">
+                            <div class="card-topo">
+                                <div>
+                                    <span> Relatório mensal </span>
+                                    <h2> {{ relatorio.nome_mes }} / {{ relatorio.ano }} </h2>
+                                </div>
+
+                                <i class="ti ti-file-report"></i>
+                            </div>
+
+                            <div class="dados">
+                                <div>
+                                    <span> Total </span>
+                                    <strong> {{ relatorio.total }} </strong>
+                                </div>
+
+                                <div>
+                                    <span> Pendentes </span>
+                                    <strong> {{ relatorio.pendentes }} </strong>
+                                </div>
+
+                                <div>
+                                    <span> Andamento </span>
+                                    <strong> {{ relatorio.andamento }} </strong>
+                                </div>
+
+                                <div>
+                                    <span> Finalizados </span>
+                                    <strong> {{ relatorio.finalizados }} </strong>
+                                </div>
+
+                                <div>
+                                    <span> Clientes </span>
+                                    <strong> {{ relatorio.total_clientes }} </strong>
+                                </div>
+                            </div>
+
+                            <div class="data-geracao"> Gerado em: {{ relatorio.criado_em|date:"d/m/Y H:i" }} </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="sem-relatorios">
+                    <i class="ti ti-file-off"></i>
+                    <h2> Nenhum relatório gerado </h2> <p> Gere seu primeiro relatório mensal. </p>
+                    <a href="{% url 'gerar_relatorio' %}"> Gerar relatório </a>
+
+                </div>
+
+            {% endif %}
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
