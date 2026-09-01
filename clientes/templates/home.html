@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}JB Chopeiras | Manutenção de chopeiras em Londrina{% endblock %}
+
+{% block content %}
+<div class="home-page">
+    <section class="home-hero" aria-labelledby="hero-title">
+        <div class="home-container hero-grid">
+            <div class="hero-copy">
+                <p class="eyebrow"><i class="ti ti-rosette-discount-check" aria-hidden="true"></i> Especialistas em chopeiras comerciais</p>
+                <h1 id="hero-title">Sua chopeira funcionando bem, <span>sempre.</span></h1>
+                <p class="hero-text">Manutenção, instalação e higienização com atendimento ágil e serviço especializado em Londrina e região.</p>
+                <div class="hero-actions">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'servicos:solicitar' %}" class="ui-button ui-button-primary">Solicitar orçamento <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+                    {% else %}
+                        <a href="{% url 'tela_entrada' %}" class="ui-button ui-button-primary">Solicitar orçamento <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+                    {% endif %}
+                    <a href="{% url 'duvidas' %}" class="ui-button ui-button-secondary">Tirar dúvidas</a>
+                </div>
+                <ul class="hero-benefits" aria-label="Diferenciais">
+                    <li><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Atendimento no local</li>
+                    <li><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Diagnóstico preciso</li>
+                    <li><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Serviço de qualidade</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="home-section home-about" aria-labelledby="sobre-title">
+        <div class="home-container about-grid">
+            <div class="section-heading">
+                <p class="eyebrow">SOBRE A JB CHOPEIRAS</p>
+                <h2 id="sobre-title">Cuidado técnico para sua operação não parar</h2>
+                <p>Atendemos bares, restaurantes, eventos e estabelecimentos do setor de alimentos e bebidas com soluções rápidas e responsáveis.</p>
+            </div>
+            <div class="about-content">
+                <p>Somos especializados em manutenção, instalação e higienização de chopeiras comerciais. Nosso trabalho combina diagnóstico cuidadoso, comunicação clara e execução de qualidade para manter seu equipamento em pleno funcionamento.</p>
+                <div class="about-highlights">
+                    <div><span><strong>Agilidade</strong><small>Menor tempo com o equipamento parado</small></span></div>
+                    <div><span><strong>Responsabilidade</strong><small>Cuidado em todas as etapas do serviço</small></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="home-section services-section" aria-labelledby="servicos-title">
+        <div class="home-container">
+            <div class="section-heading section-heading-centered">
+                <p class="eyebrow">O QUE FAZEMOS</p>
+                <h2 id="servicos-title">Serviços para manter sua chopeira em dia</h2>
+                <p>Do cuidado preventivo à solução de falhas, oferecemos o suporte necessário para seu equipamento.</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <h3>Manutenção preventiva</h3>
+                    <p>Revisões periódicas para reduzir falhas e prolongar a vida útil da chopeira.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Manutenção corretiva</h3>
+                    <p>Diagnóstico e correção de falhas de refrigeração, vazamentos e baixa pressão.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Higienização completa</h3>
+                    <p>Limpeza profissional para preservar a qualidade, o sabor e a segurança do chopp.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Atendimento no local</h3>
+                    <p>Suporte em Londrina e região com praticidade para o seu estabelecimento.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section process-section" aria-labelledby="processo-title">
+        <div class="home-container">
+            <div class="section-heading section-heading-centered">
+                <p class="eyebrow">COMO FUNCIONA</p>
+                <h2 id="processo-title">Atendimento simples e transparente</h2>
+            </div>
+            <ol class="process-list">
+                <li><span>01</span><div><h3>Envie a solicitação</h3><p>Informe seus dados e descreva o problema encontrado.</p></div></li>
+                <li><span>02</span><div><h3>Acompanhe o atendimento</h3><p>Consulte o status da solicitação pelo seu histórico.</p></div></li>
+                <li><span>03</span><div><h3>Receba a solução</h3><p>Nossa equipe realiza o atendimento combinado com você.</p></div></li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="localizacao" class="home-section location-section" aria-labelledby="location-title">
+        <div class="home-container location-grid">
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps?q=Av.+S%C3%A3o+Jo%C3%A3o,+2935,+Aritana,+Londrina,+PR&output=embed" title="Mapa da JB Chopeiras em Londrina" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="location-copy">
+                <p class="eyebrow">ONDE ESTAMOS</p>
+                <h2 id="location-title">Atendimento em Londrina e região</h2>
+                <p>Entre em contato ou visite nossa localização para conversar com a equipe.</p>
+                <address><i class="ti ti-map-pin" aria-hidden="true"></i><span><strong>JB Chopeiras</strong>Av. São João, 2935 — Aritana<br>Londrina — PR</span></address>
+                <a href="{% url 'localizacao' %}" class="ui-button ui-button-secondary">Ver localização completa <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

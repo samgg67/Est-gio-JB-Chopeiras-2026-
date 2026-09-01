@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 
 <!DOCTYPE html>
 
@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <title>Gerar Relatório - JB Chopeiras</title>
     <link rel="stylesheet", href="{% static 'css/gerar_relatorio.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=1">
     <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 </head>
 
@@ -15,29 +17,31 @@
 <div class="pagina">
 
     <aside class="menu-lateral">
-        <div class="logo-menu">
+        <div class="sidebar-logo">
             <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}", alt="JB Chopeiras">
+                <img src="{% static 'images/logo.png' %}" alt="JB Chopeiras" class="logo">
             </a>
 
         </div>
-        <nav class="menu-nav">
-            <a href="{% url 'dashboard' %}">
-                <i class="ti ti-layout-dashboard"></i> Dashboard
-            </a>
-
-            <a href="{% url 'servicosPage' %}">
-                <i class="ti ti-file-description"></i> Solicitações
-            </a>
-
-            <a href="{% url 'clientesPage' %}">
-                <i class="ti ti-users"></i> Clientes
-            </a>
-
-            <a href="{% url 'relatorios' %}", class="ativo">
-                <i class="ti ti-chart-bar"></i> Relatórios
-            </a>
+        <nav class="sidebar-nav">
+            <a href="{% url 'home' %}" class="item-menu"> Início </a>
+            <a href="{% url 'servicos:dashboard' %}" class="item-menu"> Dashboard </a>
+            <a href="{% url 'servicos:lista' %}" class="item-menu"> Solicitações </a>
+            <a href="{% url 'clientesPage' %}" class="item-menu"> Clientes </a>
+            <a href="{% url 'relatorios' %}" class="item-menu ativo"> Relatórios </a>
+            <div class="menu-divisor"></div>
+            <a href="{% url 'configuracoes' %}" class="item-menu"> Configurações </a>
         </nav>
+        <div class="sidebar-usuario">
+            <div class="bolinha-user"></div>
+            <div class="sidebar-usuario-info">
+                <span class="sidebar-usuario-nome"> {{ user.username }} </span>
+                <span class="sidebar-usuario-cargo"> Administrador </span>
+            </div>
+            <a href="{% url 'sair' %}">
+                <i class="ti ti-logout sidebar-logout" title="Sair"></i>
+            </a>
+        </div>
     </aside>
 
     <main class="conteudo">
@@ -145,7 +149,7 @@
                             <tbody>
                                 {% for solicitacao in solicitacoes %}
                                     <tr>
-                                        <td> {{ solicitacao.data_criacao|date:"d/m/Y" }} </td> 
+                                        <td> {{ solicitacao.criado_em|date:"d/m/Y" }} </td> 
                                         <td> {{ solicitacao.nome }} </td> 
                                         <td> {{ solicitacao.email }} </td><td> {{ solicitacao.problema }} </td> 
                                         <td> {{ solicitacao.endereco }} </td>

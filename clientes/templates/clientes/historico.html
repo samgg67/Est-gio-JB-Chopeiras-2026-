@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Histórico de solicitações | JB Chopeiras{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/historico.css' %}?v=9">{% endblock %}
+
+{% block content %}
+<div class="history-page">
+    <section class="history-hero" aria-labelledby="history-title">
+        <div class="history-container history-hero-inner">
+            <div>
+                <p class="history-eyebrow"><i class="ti ti-history" aria-hidden="true"></i> ÁREA DO CLIENTE</p>
+                <h1 id="history-title">Histórico de solicitações</h1>
+                <p>Acompanhe o andamento e consulte os detalhes dos serviços que você já solicitou.</p>
+            </div>
+            <a href="{% url 'servicos:solicitar' %}" class="new-request-button"><i class="ti ti-plus" aria-hidden="true"></i> Nova solicitação</a>
+        </div>
+    </section>
+
+    <section class="history-content" aria-label="Solicitações do cliente">
+        <div class="history-container">
+            <div class="history-toolbar">
+                <div><span>Suas solicitações</span><h2>Acompanhamento de serviços</h2></div>
+                <nav class="history-filters" aria-label="Filtrar por status">
+                    <a href="{% url 'historico' %}" {% if not status_selecionado %}class="active" aria-current="page"{% endif %}>Todas</a>
+                    <a href="{% url 'historico' %}?status=p" {% if status_selecionado == 'p' %}class="active" aria-current="page"{% endif %}>Pendentes</a>
+                    <a href="{% url 'historico' %}?status=a" {% if status_selecionado == 'a' %}class="active" aria-current="page"{% endif %}>Em andamento</a>
+                    <a href="{% url 'historico' %}?status=f" {% if status_selecionado == 'f' %}class="active" aria-current="page"{% endif %}>Finalizadas</a>
+                </nav>
+            </div>
+
+            {% if servicos %}
+                <div class="history-grid">
+                    {% for servico in servicos %}
+                        <article class="history-card status-{{ servico.status }}">
+                            <header class="history-card-header">
+                                <div><small>PROTOCOLO</small><strong>#{{ servico.protocolo|stringformat:"03d" }}</strong></div>
+                                <span class="status-badge">
+                                    {% if servico.status == 'p' %}<i class="ti ti-clock" aria-hidden="true"></i>
+                                    {% elif servico.status == 'a' %}<i class="ti ti-progress" aria-hidden="true"></i>
+                                    {% else %}<i class="ti ti-circle-check" aria-hidden="true"></i>{% endif %}
+                                    {{ servico.get_status_display }}
+                                </span>
+                            </header>
+
+                            <div class="history-card-body">
+                                <span class="request-date"><i class="ti ti-calendar" aria-hidden="true"></i> Solicitado em {{ servico.criado_em|date:"d/m/Y" }}</span>
+                                <h3>{{ servico.problema }}</h3>
+                                <div class="history-meta">
+                                    <div><i class="ti ti-packages" aria-hidden="true"></i><span><small>Quantidade</small>{{ servico.quantidade }}</span></div>
+                                    <div><i class="ti ti-calendar-due" aria-hidden="true"></i><span><small>Previsão</small>{% if servico.previsao_entrega %}{{ servico.previsao_entrega|date:"d/m/Y" }}{% else %}A definir{% endif %}</span></div>
+                                </div>
+                            </div>
+
+                            <details class="history-details">
+                                <summary>Ver detalhes <i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+                                <div>
+                                    <p><strong>Endereço do atendimento</strong>{{ servico.endereco }}</p>
+                                    {% if servico.notas %}<p><strong>Descrição enviada</strong>{{ servico.notas|linebreaksbr }}</p>{% endif %}
+                                    {% if servico.telefone %}<p><strong>Telefone informado</strong>{{ servico.telefone }}</p>{% endif %}
+                                </div>
+                            </details>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="history-empty">
+                    <span><i class="ti ti-clipboard-off" aria-hidden="true"></i></span>
+                    {% if resumo.total %}
+                        <h2>Nenhuma solicitação com esse status</h2>
+                        <p>Escolha outro filtro para consultar seus atendimentos.</p>
+                        <a href="{% url 'historico' %}" class="empty-secondary">Ver todas as solicitações</a>
+                    {% else %}
+                        <h2>Você ainda não fez uma solicitação</h2>
+                        <p>Quando você enviar um pedido de atendimento, ele aparecerá aqui.</p>
+                        <a href="{% url 'servicos:solicitar' %}" class="empty-primary">Solicitar atendimento <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}

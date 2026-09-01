@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Localização - JB Chopeiras{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/conta_cliente.css' %}?v=7">{% endblock %}
+{% block content %}
+<section class="pagina-localizacao">
+    <div class="cabecalho-pagina"><span>ONDE ESTAMOS</span><h1>Localização</h1><p>Visite a JB Chopeiras ou fale com nossa equipe para solicitar atendimento.</p></div>
+    <div class="localizacao-grid">
+        <div class="mapa-localizacao"><iframe src="{{ local.url_mapa|default:'https://www.google.com/maps?q=Av.+S%C3%A3o+Jo%C3%A3o,+2935,+Aritana,+Londrina,+PR&output=embed' }}" title="Mapa da JB Chopeiras" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <aside class="dados-localizacao">
+            <h2>{{ local.nome|default:'JB Chopeiras' }}</h2>
+            <div class="info-localizacao"><i class="ti ti-map-pin"></i><div><strong>Endereço</strong><p>{{ local.endereco|default:'Av. São João, 2935' }}<br>{{ local.cidade|default:'Londrina' }} - {{ local.estado|default:'PR' }}{% if local.cep %}<br>CEP {{ local.cep }}{% endif %}</p></div></div>
+            <div class="info-localizacao"><i class="ti ti-phone"></i><div><strong>Telefone</strong><p>{{ local.telefone|default:'(43) 98402-2769' }}</p></div></div>
+            <div class="info-localizacao"><i class="ti ti-clock"></i><div><strong>Atendimento</strong><p>{{ local.horario_atendimento|default:'Segunda a sexta, das 8h às 18h' }}</p></div></div>
+            <a class="botao-whatsapp" href="https://wa.me/{{ local.numero_whatsapp|default:'5543984022769' }}" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-whatsapp"></i> Falar pelo WhatsApp</a>
+        </aside>
+    </div>
+</section>
+{% endblock %}

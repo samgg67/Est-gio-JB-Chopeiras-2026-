@@ -11,6 +11,9 @@ class Servicos(admin.ModelAdmin):
         'endereco',
         'problema',
         'status',
+        'quantidade',
+        'previsao_entrega',
+        'criado_em',
         'notas',
     )
 

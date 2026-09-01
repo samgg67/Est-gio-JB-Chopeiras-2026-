@@ -1,0 +1,32 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Solicitação Enviada - JB Chopeiras
+{% endblock %}
+
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'servicos/css/sucesso.css' %}"
+>
+{% endblock %}
+
+
+{% block content %}
+
+<main class="area-sucesso">
+    <div class="box-sucesso">
+        <div class="icone-sucesso"> </div>
+        <h1> Solicitação enviada! </h1>
+        <p class="mensagem-principal"> Sua solicitação foi cadastrada com sucesso. </p>
+        <p class="mensagem-secundaria"> As informações foram encaminhadas para nossa equipe e poderão ser acompanhadas pelo responsável pelo atendimento. </p>
+        <div class="acoes-sucesso">
+            <a href="{% url 'home' %}", class="btn-sucesso"> Voltar ao início </a>
+            <a href="{% url 'servicos:solicitar' %}", class="btn-nova"> Nova solicitação </a>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

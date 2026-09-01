@@ -1,0 +1,73 @@
+.campo-status {
+    height: 42px;
+    padding: 9px 32px 9px 12px;
+    border: 1px solid #383838;
+    border-radius: 4px;
+    outline: none;
+    background: #111111;
+    color: #ebe7dc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.campo-status:focus {
+    border-color: #d2ae45;
+}
+
+.btn-limpar {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #383838;
+    border-radius: 4px;
+    color: #96948d;
+    text-decoration: none;
+}
+
+.btn-limpar:hover {
+    border-color: #d2ae45;
+    color: #d2ae45;
+}
+
+.info-secundaria {
+    margin-top: 3px;
+    display: block;
+    color: #96948d;
+    font-size: 13px;
+}
+
+.status {
+    padding: 6px 9px;
+    display: inline-flex;
+    border: 1px solid rgba(210, 174, 69, 0.35);
+    border-radius: 999px;
+    background: rgba(210, 174, 69, 0.1);
+    color: #e1c263;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.conteudo > .pagination {
+    width: 80%;
+    margin: 18px auto 0;
+}
+
+@media (max-width: 1000px) {
+    .conteudo > .pagination {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .pesquisa-form {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .campo-pesquisa,
+    .campo-status {
+        width: 100%;
+    }
+}

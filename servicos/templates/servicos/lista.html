@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações - JB Chopeiras</title>
+    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'servicos/css/lista.css' %}?v=9">
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+</head>
+<body>
+<div class="pagina">
+    <div class="miolo">
+        <aside class="menu-lateral">
+            <div class="sidebar-logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo JB Chopeiras" class="logo"></a>
+            </div>
+            <nav class="sidebar-nav" aria-label="Navegação administrativa">
+                <a href="{% url 'home' %}" class="item-menu">Início</a>
+                <a href="{% url 'servicos:dashboard' %}" class="item-menu">Dashboard</a>
+                <a href="{% url 'servicos:lista' %}" class="item-menu ativo" aria-current="page">Solicitações</a>
+                <a href="{% url 'clientesPage' %}" class="item-menu">Clientes</a>
+                <a href="{% url 'relatorios' %}" class="item-menu">Relatórios</a>
+                <div class="menu-divisor"></div>
+                <a href="{% url 'configuracoes' %}" class="item-menu">Configurações</a>
+            </nav>
+            <div class="sidebar-usuario">
+                <div class="bolinha-user"></div>
+                <div class="sidebar-usuario-info">
+                    <span class="sidebar-usuario-nome">{{ user.username }}</span>
+                    <span class="sidebar-usuario-cargo">Administrador</span>
+                </div>
+                <a href="{% url 'sair' %}" aria-label="Sair"><i class="ti ti-logout sidebar-logout" aria-hidden="true"></i></a>
+            </div>
+        </aside>
+
+        <main class="conteudo">
+            <h1 class="titulo">SOLICITAÇÕES</h1>
+
+            <div class="topo-conteudo">
+                <a href="{% url 'servicos:criar' %}" class="btn btn-criar">+ Adicionar</a>
+                <form method="get" class="pesquisa-form" role="search">
+                    <input type="search" name="q" value="{{ pesquisa }}" placeholder="Pesquisar solicitação..." class="campo-pesquisa">
+                    <select name="status" class="campo-status" aria-label="Filtrar por status">
+                        <option value="">Todos os status</option>
+                        {% for valor, nome in status_opcoes %}
+                            <option value="{{ valor }}" {% if status_selecionado == valor %}selected{% endif %}>{{ nome }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn-pesquisar" aria-label="Pesquisar"><i class="ti ti-search"></i></button>
+                    {% if pesquisa or status_selecionado %}<a href="{% url 'servicos:lista' %}" class="btn-limpar" aria-label="Limpar filtros"><i class="ti ti-x"></i></a>{% endif %}
+                </form>
+            </div>
+
+            <div class="quadro-tabela">
+                <table>
+                    <thead>
+                        <tr><th>Protocolo</th><th>Cliente</th><th>Contato</th><th>Solicitação</th><th>Status</th><th>Data</th><th>Ações</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for servico in servicos %}
+                            <tr>
+                                <td><a href="{% url 'servicos:editar' servico.id %}" class="link-cliente">#{{ servico.protocolo|stringformat:"03d" }}</a></td>
+                                <td><strong>{{ servico.nome }}</strong><small class="info-secundaria">{{ servico.endereco|truncatechars:32 }}</small></td>
+                                <td>{{ servico.telefone|default:'Não informado' }}<small class="info-secundaria">{{ servico.email }}</small></td>
+                                <td><strong>{{ servico.problema }}</strong><small class="info-secundaria">{{ servico.notas|default:'Sem observações'|truncatechars:42 }}</small></td>
+                                <td><span class="status status-{{ servico.status }}">{{ servico.get_status_display }}</span></td>
+                                <td>{{ servico.criado_em|date:"d/m/Y" }}</td>
+                                <td>
+                                    <div class="acoes">
+                                        <a href="{% url 'servicos:editar' servico.id %}" class="btn btn-editar">Editar</a>
+                                        <a href="{% url 'servicos:excluir' servico.id %}" class="btn btn-excluir">Excluir</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr><td colspan="7">Nenhuma solicitação encontrada.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if pagina.paginator.num_pages > 1 %}
+                <nav class="pagination" aria-label="Paginação das solicitações">
+                    <span>Página {{ pagina.number }} de {{ pagina.paginator.num_pages }}</span>
+                    <div>
+                        {% if pagina.has_previous %}<a href="?page={{ pagina.previous_page_number }}&q={{ pesquisa|urlencode }}&status={{ status_selecionado }}" aria-label="Página anterior"><i class="ti ti-chevron-left"></i></a>{% else %}<span class="disabled"><i class="ti ti-chevron-left"></i></span>{% endif %}
+                        {% for numero in pagina.paginator.page_range %}{% if numero == pagina.number %}<span class="current" aria-current="page">{{ numero }}</span>{% elif numero >= pagina.number|add:'-2' and numero <= pagina.number|add:'2' %}<a href="?page={{ numero }}&q={{ pesquisa|urlencode }}&status={{ status_selecionado }}">{{ numero }}</a>{% endif %}{% endfor %}
+                        {% if pagina.has_next %}<a href="?page={{ pagina.next_page_number }}&q={{ pesquisa|urlencode }}&status={{ status_selecionado }}" aria-label="Próxima página"><i class="ti ti-chevron-right"></i></a>{% else %}<span class="disabled"><i class="ti ti-chevron-right"></i></span>{% endif %}
+                    </div>
+                </nav>
+            {% endif %}
+        </main>
+    </div>
+</div>
+</body>
+</html>

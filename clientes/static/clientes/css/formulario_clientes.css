@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #251d1b;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background: #000000;
+    border: 1px solid #FFC107;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    text-align: center;
+    color: #FFC107;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+form {
+    width: 100%;
+}
+
+form p {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #FFC107;
+    border-radius: 8px;
+    background: #111111;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ffd54a;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.3);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.erro {
+    display: block !important;
+    margin-top: 7px !important;
+    color: #ff4d4d !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+
+.erro * {
+    color: #ff4d4d !important;
+}
+
+.erro-geral {
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    background: #3a0000;
+    border: 1px solid #aa2222;
+    border-radius: 6px;
+    color: #ffb3b3 !important;
+}
+
+.errorlist {
+    list-style: none;
+    margin: 7px 0 10px 0;
+    padding: 8px 10px;
+    background: #3a0000;
+    border: 1px solid #aa2222;
+    border-radius: 6px;
+    color: #ff4d4d !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.errorlist li {
+    color: #ff4d4d !important;
+}
+
+.errorlist li * {
+    color: #ff4d4d !important;
+}
+
+form .erro, form .erro *, form .errorlist, form .errorlist *, form span.erro {
+    color: #ff4d4d !important;
+}
+
+.helptext {
+    display: block;
+    margin-top: 5px;
+    color: #aaaaaa;
+    font-size: 13px;
+}
+
+.acoes-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+button[type="submit"] {
+    background: #FFC107;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #f8e292;
+}
+
+.btn-voltar {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #333333;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background: #555555;
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+    .container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .acoes-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .acoes-form button, .acoes-form .btn-voltar {
+        width: 100%;
+        text-align: center;
+    }
+
+}

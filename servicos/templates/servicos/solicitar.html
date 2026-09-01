@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Solicitar atendimento | JB Chopeiras{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'servicos/css/solicitar.css' %}?v=10">{% endblock %}
+
+{% block content %}
+<div class="request-page">
+    <section class="request-hero" aria-labelledby="request-title">
+        <div class="request-container">
+            <p class="request-eyebrow"><i class="ti ti-tool" aria-hidden="true"></i> SOLICITAÇÃO DE SERVIÇO</p>
+            <h1 id="request-title">Conte como podemos ajudar</h1>
+            <p>Preencha os dados abaixo para nossa equipe entender sua necessidade e iniciar o atendimento.</p>
+            <ol class="request-progress" aria-label="Etapas do atendimento">
+                <li class="active"><span>1</span>Enviar solicitação</li>
+                <li><span>2</span>Análise da equipe</li>
+                <li><span>3</span>Acompanhar histórico</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="request-content">
+        <div class="request-container request-layout">
+            <div class="request-form-card">
+                <div class="request-card-heading">
+                    <span class="request-heading-icon"><i class="ti ti-clipboard-text" aria-hidden="true"></i></span>
+                    <div><h2>Dados da solicitação</h2><p>Os campos marcados com * são obrigatórios.</p></div>
+                </div>
+
+                {% if form.errors %}
+                    <div class="form-alert" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span><strong>Revise os dados informados.</strong> Corrija os campos destacados para continuar.</span></div>
+                {% endif %}
+
+                <form method="post" class="request-form" novalidate>
+                    {% csrf_token %}
+                    {% for erro in form.non_field_errors %}<div class="field-error form-general-error">{{ erro }}</div>{% endfor %}
+
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="{{ form.nome.id_for_label }}">Nome completo <span aria-hidden="true">*</span></label>
+                            <div class="input-wrap"><i class="ti ti-user" aria-hidden="true"></i>{{ form.nome }}</div>
+                            {% for erro in form.nome.errors %}<span class="field-error"><i class="ti ti-alert-circle" aria-hidden="true"></i>{{ erro }}</span>{% endfor %}
+                        </div>
+
+                        <div class="form-field">
+                            <label for="{{ form.telefone.id_for_label }}">Telefone com DDD (Apenas Números) <span aria-hidden="true">*</span></label>
+                            <div class="input-wrap"><i class="ti ti-phone" aria-hidden="true"></i>{{ form.telefone }}</div>
+                            <small>Digite somente números.</small>
+                            {% for erro in form.telefone.errors %}<span class="field-error"><i class="ti ti-alert-circle" aria-hidden="true"></i>{{ erro }}</span>{% endfor %}
+                        </div>
+
+                        <div class="form-field form-field-full">
+                            <label for="{{ form.endereco.id_for_label }}">Endereço do atendimento <span aria-hidden="true">*</span></label>
+                            <div class="input-wrap"><i class="ti ti-map-pin" aria-hidden="true"></i>{{ form.endereco }}</div>
+                            {% for erro in form.endereco.errors %}<span class="field-error"><i class="ti ti-alert-circle" aria-hidden="true"></i>{{ erro }}</span>{% endfor %}
+                        </div>
+
+                        <div class="form-field form-field-full">
+                            <label for="{{ form.problema.id_for_label }}">Resumo do problema <span aria-hidden="true">*</span></label>
+                            <div class="input-wrap"><i class="ti ti-alert-triangle" aria-hidden="true"></i>{{ form.problema }}</div>
+                            <small>Exemplo: vazamento, baixa pressão ou sem refrigeração.</small>
+                            {% for erro in form.problema.errors %}<span class="field-error"><i class="ti ti-alert-circle" aria-hidden="true"></i>{{ erro }}</span>{% endfor %}
+                        </div>
+
+                        <div class="form-field form-field-full">
+                            <label for="{{ form.explicacao.id_for_label }}">Explique o que está acontecendo <span aria-hidden="true">*</span></label>
+                            <div class="textarea-wrap">{{ form.explicacao }}</div>
+                            <small>Inclua quando o problema começou e os sinais que você percebeu.</small>
+                            {% for erro in form.explicacao.errors %}<span class="field-error"><i class="ti ti-alert-circle" aria-hidden="true"></i>{{ erro }}</span>{% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <p><i class="ti ti-lock" aria-hidden="true"></i> Seus dados serão usados somente para este atendimento.</p>
+                        <button type="submit" class="submit-request">Enviar solicitação <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>
+{% endblock %}

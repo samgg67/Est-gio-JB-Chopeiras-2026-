@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
 }
 
-
 .menu-lateral {
     width: 200px;
     background: #1d1515;
@@ -35,7 +34,6 @@ body {
     top: 0;
 }
 
-
 .sidebar-logo {
     display: flex;
     justify-content: center;
@@ -43,13 +41,11 @@ body {
     padding: 5px 0;
 }
 
-
 .logo {
     width: 200px;
     height: auto;
     object-fit: contain;
 }
-
 
 .sidebar-nav {
     flex: 1;
@@ -58,7 +54,6 @@ body {
     flex-direction: column;
     gap: 4px;
 }
-
 
 .item-menu {
     color: #FFC107;
@@ -73,12 +68,9 @@ body {
     transition: 0.15s;
 }
 
-
 .item-menu:hover {
-    background:
-        rgba(255, 193, 7, 0.08);
+    background: rgba(255, 193, 7, 0.08);
 }
-
 
 .item-menu.ativo {
     background: #FFC107;
@@ -95,7 +87,6 @@ body {
     gap: 10px;
 }
 
-
 .bolinha-user {
     width: 28px;
     height: 28px;
@@ -103,13 +94,11 @@ body {
     border-radius: 50%;
 }
 
-
 .sidebar-usuario-info {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
-
 
 .sidebar-usuario-nome {
     color: #ffffff;
@@ -117,18 +106,15 @@ body {
     font-weight: bold;
 }
 
-
 .sidebar-usuario-cargo {
     color: #ffc400;
     font-size: 12px;
 }
 
-
 .sidebar-logout {
     color: #ffffff;
     font-size: 25px;
 }
-
 
 .sidebar-logout:hover {
     color: #ffc400;
@@ -151,12 +137,10 @@ body {
     justify-content: space-between;
 }
 
-
 .cabecalho h1 {
     color: #FFC107;
     font-size: 34px;
 }
-
 
 .novo-relatorio {
     background: #FFC107;
@@ -170,7 +154,6 @@ body {
     font-weight: bold;
 }
 
-
 .novo-relatorio:hover {
     background: #111111;
     color: #FFC107;
@@ -182,11 +165,9 @@ body {
     max-width: 1500px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns:
-        repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
-
 
 .card-relatorio {
     background: #111111;
@@ -194,7 +175,6 @@ body {
     border-radius: 5px;
     padding: 25px;
 }
-
 
 .card-topo {
     display: flex;
@@ -205,12 +185,10 @@ body {
     border-bottom: 1px solid #3a302d;
 }
 
-
 .card-topo span {
     color: #aaaaaa;
     font-size: 13px;
 }
-
 
 .card-topo h2 {
     margin-top: 5px;
@@ -218,20 +196,16 @@ body {
     font-size: 24px;
 }
 
-
 .card-topo i {
     color: #FFC107;
     font-size: 40px;
 }
 
-
 .dados {
     display: grid;
-    grid-template-columns:
-        repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
 }
-
 
 .dados div {
     background: #1d1515;
@@ -240,7 +214,6 @@ body {
     text-align: center;
 }
 
-
 .dados span {
     display: block;
     color: #aaaaaa;
@@ -248,12 +221,10 @@ body {
     margin-bottom: 7px;
 }
 
-
 .dados strong {
     color: #ffffff;
     font-size: 22px;
 }
-
 
 .data-geracao {
     margin-top: 20px;
@@ -269,23 +240,19 @@ body {
     text-align: center;
 }
 
-
 .sem-relatorios i {
     color: #FFC107;
     font-size: 60px;
 }
 
-
 .sem-relatorios h2 {
     margin: 20px 0 10px;
 }
-
 
 .sem-relatorios p {
     color: #aaaaaa;
     margin-bottom: 25px;
 }
-
 
 .sem-relatorios a {
     background: #FFC107;
@@ -303,7 +270,6 @@ body {
     }
 
 }
-
 
 @media (max-width: 700px) {
 
@@ -328,8 +294,7 @@ body {
     }
 
     .dados {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }

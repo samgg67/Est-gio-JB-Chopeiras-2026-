@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Perfil do cliente - JB Chopeiras{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/conta_cliente.css' %}?v=7">{% endblock %}
+{% block content %}
+<section class="pagina-config-cliente">
+    <div class="cabecalho-pagina"><span>MINHA CONTA</span><h1>Perfil do cliente</h1><p>Gerencie seus dados pessoais e a segurança da sua conta.</p></div>
+    {% if sucesso %}<div class="mensagem-conta mensagem-larga"><i class="ti ti-circle-check"></i> Perfil atualizado com sucesso.</div>{% endif %}
+    <div class="config-cliente-grid">
+        <section class="bloco-config-cliente">
+            <div class="bloco-titulo"><i class="ti ti-user-edit"></i><div><h2>Dados pessoais</h2><p>Informações utilizadas nos seus atendimentos.</p></div></div>
+            <form method="post" class="form-conta" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="campo-conta"><label for="{{ field.id_for_label }}">{{ field.label }} *</label>{{ field }}{% for error in field.errors %}<span class="erro-conta">{{ error }}</span>{% endfor %}</div>
+                {% endfor %}
+                {% for error in form.non_field_errors %}<span class="erro-conta">{{ error }}</span>{% endfor %}
+                <div class="campo-conta"><label>E-mail de acesso</label><input type="email" value="{{ user.email }}" disabled><small>O e-mail utilizado para entrar não pode ser alterado aqui.</small></div>
+                <button class="botao-principal" type="submit"><i class="ti ti-device-floppy"></i> Salvar dados</button>
+            </form>
+        </section>
+        <aside class="coluna-conta">
+            <section class="bloco-config-cliente resumo-cliente">
+                <span class="avatar-perfil"><i class="ti ti-user"></i></span>
+                <h2>{{ user.first_name|default:'Cliente' }}</h2><p>{{ user.email }}</p><span class="selo-cliente">Cliente JB Chopeiras</span>
+            </section>
+            <section class="bloco-config-cliente seguranca-cliente">
+                <div class="bloco-titulo"><i class="ti ti-shield-lock"></i><div><h2>Segurança</h2><p>Mantenha sua conta protegida.</p></div></div>
+                <a href="{% url 'trocar_senha' %}" class="botao-secundario"><i class="ti ti-key"></i> Trocar minha senha</a>
+            </section>
+        </aside>
+    </div>
+</section>
+{% endblock %}

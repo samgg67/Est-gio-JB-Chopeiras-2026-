@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -9,6 +9,8 @@
 
     <title> Visualizar Relatórios - JB Chopeiras </title>
     <link rel="stylesheet", href="{% static 'css/visualizar_relatorios.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=1">
     <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 </head>
 
@@ -23,11 +25,13 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="{% url 'dashboard' %}", class="item-menu"> <i class="ti ti-layout-dashboard"></i> Dashboard </a>
-                <a href="{% url 'servicosPage' %}", class="item-menu"> <i class="ti ti-file-description"></i> Solicitações </a>
-                <a href="{% url 'clientesPage' %}" class="item-menu"> <i class="ti ti-users"></i> Clientes </a>
-                <a href="{% url 'relatorios' %}", class="item-menu ativo"> <i class="ti ti-chart-bar"></i> Relatórios </a>
-
+                <a href="{% url 'home' %}" class="item-menu"> Início </a>
+                <a href="{% url 'servicos:dashboard' %}" class="item-menu"> Dashboard </a>
+                <a href="{% url 'servicos:lista' %}" class="item-menu"> Solicitações </a>
+                <a href="{% url 'clientesPage' %}" class="item-menu"> Clientes </a>
+                <a href="{% url 'relatorios' %}" class="item-menu ativo"> Relatórios </a>
+                <div class="menu-divisor"></div>
+                <a href="{% url 'configuracoes' %}" class="item-menu"> Configurações </a>
             </nav>
 
 
@@ -36,7 +40,7 @@
                 <div class="sidebar-usuario-info">
                     <span class="sidebar-usuario-nome"> {{ user.username }} </span>
                     <span class="sidebar-usuario-cargo"> Administrador </span> </div>
-                <a href="{% url 'sair' %}" class="sidebar-logout"> <i class="ti ti-logout"></i> </a>
+                <a href="{% url 'sair' %}"> <i class="ti ti-logout sidebar-logout" title="Sair"></i> </a>
             </div>
         </aside>
 

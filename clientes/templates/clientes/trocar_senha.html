@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Trocar senha - JB Chopeiras{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/conta_cliente.css' %}?v=7">{% endblock %}
+
+{% block content %}
+<section class="pagina-config-cliente">
+    <div class="cabecalho-pagina"><span>MINHA CONTA</span><h1>Trocar senha</h1><p>Atualize sua senha de acesso com segurança.</p></div>
+    <div class="cartao-conta cartao-senha">
+        <div class="titulo-conta">
+            <i class="ti ti-lock"></i>
+            <div><h2>Nova senha</h2><p>Escolha uma senha segura para proteger sua conta.</p></div>
+        </div>
+        {% if sucesso %}<div class="mensagem-conta">Senha alterada com sucesso.</div>{% endif %}
+        <form method="post" class="form-conta" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}
+                {% for error in field.errors %}<span class="erro-conta">{{ error }}</span>{% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}<span class="erro-conta">{{ error }}</span>{% endfor %}
+            <div class="acoes-conta"><a href="{% url 'perfil_cliente' %}">Voltar</a><button type="submit">Alterar senha</button></div>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,7 +7,9 @@
     <meta charset="UTF-8">
     <title>Clientes - JB Chopeiras</title>
 
-    <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
+    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=1">
 
     <link
         rel="stylesheet"
@@ -32,12 +34,12 @@
 
             <nav class="sidebar-nav">
                 <a href="{% url 'home' %}" class="item-menu"> Início </a>
-                <a href="{% url 'dashboard' %}" class="item-menu"> Dashboard </a>
-                <a href="{% url 'servicosPage' %}" class="item-menu"> Solicitações </a>
+                <a href="{% url 'servicos:dashboard' %}" class="item-menu"> Dashboard </a>
+                <a href="{% url 'servicos:lista' %}" class="item-menu"> Solicitações </a>
                 <a href="{% url 'clientesPage' %}" class="item-menu ativo"> Clientes </a>
-                <a href="#" class="item-menu"> Relatórios </a>
+                <a href="{% url 'relatorios' %}" class="item-menu"> Relatórios </a>
                 <div class="menu-divisor"></div>
-                <a href="#" class="item-menu"> Configurações </a>
+                <a href="{% url 'configuracoes' %}" class="item-menu"> Configuraçoes </a>
             </nav>
 
             <div class="sidebar-usuario">
@@ -156,6 +158,33 @@
                     </tbody>
                 </table>
             </div>
+
+            {% if pagina.paginator.num_pages > 1 %}
+                <nav class="pagination" aria-label="Paginação dos clientes">
+                    <span>Página {{ pagina.number }} de {{ pagina.paginator.num_pages }}</span>
+                    <div>
+                        {% if pagina.has_previous %}
+                            <a href="?page={{ pagina.previous_page_number }}&q={{ pesquisa|urlencode }}" aria-label="Página anterior"><i class="ti ti-chevron-left"></i></a>
+                        {% else %}
+                            <span class="disabled"><i class="ti ti-chevron-left"></i></span>
+                        {% endif %}
+
+                        {% for numero in pagina.paginator.page_range %}
+                            {% if numero == pagina.number %}
+                                <span class="current" aria-current="page">{{ numero }}</span>
+                            {% elif numero >= pagina.number|add:'-2' and numero <= pagina.number|add:'2' %}
+                                <a href="?page={{ numero }}&q={{ pesquisa|urlencode }}">{{ numero }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if pagina.has_next %}
+                            <a href="?page={{ pagina.next_page_number }}&q={{ pesquisa|urlencode }}" aria-label="Próxima página"><i class="ti ti-chevron-right"></i></a>
+                        {% else %}
+                            <span class="disabled"><i class="ti ti-chevron-right"></i></span>
+                        {% endif %}
+                    </div>
+                </nav>
+            {% endif %}
         </main>
     </div>
 </div>

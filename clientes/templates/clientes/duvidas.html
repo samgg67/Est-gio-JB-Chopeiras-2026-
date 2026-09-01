@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dúvidas frequentes | JB Chopeiras{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/duvidas.css' %}?v=8">{% endblock %}
+
+{% block content %}
+<div class="faq-page">
+    <section class="faq-hero" aria-labelledby="faq-title">
+        <div class="faq-container">
+            <p class="faq-eyebrow"><i class="ti ti-help-hexagon" aria-hidden="true"></i> CENTRAL DE AJUDA</p>
+            <h1 id="faq-title">Como podemos ajudar?</h1>
+            <p>Encontre respostas rápidas sobre manutenção, atendimento e solicitações de serviço.</p>
+        </div>
+    </section>
+
+    <section class="faq-content" aria-label="Perguntas e canais de atendimento">
+        <div class="faq-container faq-layout">
+            <div class="faq-main">
+                <div class="faq-section-heading">
+                    <div>
+                        <span>Perguntas frequentes</span>
+                        <h2>Respostas para as principais dúvidas</h2>
+                    </div>
+                    {% if perguntas %}<span class="faq-count">{{ perguntas|length }} pergunta{{ perguntas|length|pluralize }}</span>{% endif %}
+                </div>
+
+                <div class="faq-list">
+                    {% for item in perguntas %}
+                        <details class="faq-item">
+                            <summary>
+                                <span class="faq-question"><i class="ti ti-message-question" aria-hidden="true"></i>{{ item.pergunta }}</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </summary>
+                            <div class="faq-answer">{{ item.resposta|linebreaks }}</div>
+                        </details>
+                    {% empty %}
+                        <div class="faq-empty">
+                            <i class="ti ti-mood-empty" aria-hidden="true"></i>
+                            <h2>Nenhuma dúvida cadastrada</h2>
+                            <p>Nossa equipe ainda pode ajudar você pelos canais de atendimento.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <aside class="support-card" aria-labelledby="support-title">
+                <span class="support-icon"><i class="ti ti-headset" aria-hidden="true"></i></span>
+                <p class="faq-eyebrow">ATENDIMENTO</p>
+                <h2 id="support-title">Ainda precisa de ajuda?</h2>
+                <p>Fale diretamente com nossa equipe. Vamos entender sua necessidade e orientar o próximo passo.</p>
+                <div class="support-actions">
+                    <a href="https://wa.me/5543984022769" target="_blank" rel="noopener noreferrer" class="support-link support-whatsapp">
+                        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+                        <span><small>Resposta mais rápida</small>Chamar no WhatsApp</span>
+                        <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:contato@jbchopeiras.com.br" class="support-link">
+                        <i class="ti ti-mail" aria-hidden="true"></i>
+                        <span><small>Envie sua mensagem</small>Mandar um e-mail</span>
+                        <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                    <a href="{% url 'localizacao' %}" class="support-link">
+                        <i class="ti ti-map-pin" aria-hidden="true"></i>
+                        <span><small>Londrina — PR</small>Ver localização</span>
+                        <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="faq-cta" aria-labelledby="faq-cta-title">
+        <div class="faq-container faq-cta-inner">
+            <div><p class="faq-eyebrow">SOLICITAÇÃO ONLINE</p><h2 id="faq-cta-title">Já sabe qual é o problema?</h2><p>Envie os detalhes e acompanhe o andamento pelo histórico da sua conta.</p></div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'servicos:solicitar' %}" class="faq-button">Solicitar atendimento <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+            {% else %}
+                <a href="{% url 'tela_entrada' %}" class="faq-button">Entrar para solicitar <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}

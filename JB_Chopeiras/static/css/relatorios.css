@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
 }
 
-
 .menu-lateral {
     width: 200px;
     background: #1d1515;
@@ -35,7 +34,6 @@ body {
     top: 0;
 }
 
-
 .sidebar-logo {
     display: flex;
     justify-content: center;
@@ -43,13 +41,11 @@ body {
     padding: 5px 0;
 }
 
-
 .logo {
     width: 200px;
     height: auto;
     object-fit: contain;
 }
-
 
 .sidebar-nav {
     flex: 1;
@@ -58,7 +54,6 @@ body {
     flex-direction: column;
     gap: 4px;
 }
-
 
 .item-menu {
     color: #FFC107;
@@ -71,9 +66,7 @@ body {
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
-    transition:
-        background 0.15s,
-        color 0.15s;
+    transition: background 0.15s, color 0.15s;
     border: none;
     background: none;
     width: 100%;
@@ -81,19 +74,15 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
 .item-menu i {
     font-size: 18px;
     flex-shrink: 0;
 }
 
-
 .item-menu:hover {
-    background:
-        rgba(255, 193, 7, 0.08);
+    background: rgba(255, 193, 7, 0.08);
     color: #FFC107;
 }
-
 
 .item-menu.ativo {
     background: #FFC107;
@@ -110,7 +99,6 @@ body {
     gap: 10px;
 }
 
-
 .bolinha-user {
     width: 28px;
     height: 28px;
@@ -119,14 +107,12 @@ body {
     flex-shrink: 0;
 }
 
-
 .sidebar-usuario-info {
     display: flex;
     flex-direction: column;
     flex: 1;
     min-width: 0;
 }
-
 
 .sidebar-usuario-nome {
     color: #ffffff;
@@ -136,19 +122,16 @@ body {
     text-overflow: ellipsis;
 }
 
-
 .sidebar-usuario-cargo {
     color: #ffc400;
     font-size: 12px;
 }
-
 
 .sidebar-logout {
     color: #ffffff;
     font-size: 25px;
     text-decoration: none;
 }
-
 
 .sidebar-logout:hover {
     color: #ffc400;
@@ -163,7 +146,6 @@ body {
     width: auto;
     min-width: 0;
 }
-
 
 .titulo {
     text-align: center;
@@ -182,7 +164,6 @@ body {
     flex-wrap: wrap;
 }
 
-
 .botao {
     background: #111111;
     border: 1px solid #d4a300;
@@ -197,26 +178,22 @@ body {
     transition: 0.2s;
 }
 
-
 .botao:hover {
     background: #FFC107;
     color: #000000;
     transform: translateY(-2px);
 }
 
-
 .botao-perigo {
     color: #ff6b6b;
     border-color: #ff6b6b;
 }
-
 
 .botao-perigo:hover {
     background: #c62828;
     color: #ffffff;
     border-color: #c62828;
 }
-
 
 .filtros {
     width: 100%;
@@ -231,20 +208,17 @@ body {
     border-radius: 4px;
 }
 
-
 .campo {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-
 .campo label {
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
 }
-
 
 .campo select {
     min-width: 190px;
@@ -256,11 +230,9 @@ body {
     outline: none;
 }
 
-
 .campo select:focus {
     border-color: #FFC107;
 }
-
 
 .filtros button {
     border: 1px solid #d4a300;
@@ -277,7 +249,6 @@ body {
     transition: 0.2s;
 }
 
-
 .filtros button:hover {
     background: #111111;
     color: #FFC107;
@@ -288,11 +259,9 @@ body {
     max-width: 1500px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns:
-        repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
-
 
 .card-grafico {
     background: #111111;
@@ -302,7 +271,6 @@ body {
     min-width: 0;
 }
 
-
 .card-grafico h2 {
     text-align: center;
     color: #ffffff;
@@ -310,7 +278,6 @@ body {
     font-weight: normal;
     margin-bottom: 20px;
 }
-
 
 .card-grafico img {
     display: block;
@@ -331,13 +298,11 @@ body {
     text-align: center;
 }
 
-
 .sem-dados i {
     color: #FFC107;
     font-size: 45px;
     margin-bottom: 10px;
 }
-
 
 .sem-dados p {
     color: #cccccc;
@@ -355,14 +320,11 @@ body {
 
 }
 
-
 @media (max-width: 700px) {
 
     .menu-lateral {
         position: relative;
-
         width: 100%;
-
         min-height: auto;
     }
 
@@ -372,15 +334,12 @@ body {
 
     .conteudo {
         margin-left: 0;
-
         width: 100%;
-
         padding: 25px 15px;
     }
 
     .titulo {
         font-size: 28px;
-
         margin-bottom: 30px;
     }
 
@@ -394,7 +353,6 @@ body {
 
     .filtros {
         flex-direction: column;
-
         align-items: stretch;
     }
 
@@ -406,4 +364,10 @@ body {
         justify-content: center;
     }
 
+}
+
+.menu-divisor {
+    height: 1px;
+    background: rgba(212, 163, 0, 0.2);
+    margin: 8px 4px;
 }

@@ -1,0 +1,254 @@
+:root {
+    --admin-black: #0d0d0d;
+    --admin-graphite: #171717;
+    --admin-card: #1e1e1e;
+    --admin-input: #101010;
+    --admin-border: #383838;
+    --admin-gold: #d2ae45;
+    --admin-gold-light: #e1c263;
+    --admin-text: #ebe7dc;
+    --admin-muted: #96948d;
+    --admin-danger: #d85c5c;
+}
+
+html,
+body {
+    min-width: 320px;
+    margin: 0;
+    background: var(--admin-black) !important;
+    color: var(--admin-text) !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.pagina,
+.miolo,
+.admin-page,
+.conteudo,
+.admin-content {
+    background: var(--admin-black) !important;
+    color: var(--admin-text) !important;
+}
+
+.menu-lateral {
+    border-color: #303030 !important;
+    background: #080808 !important;
+}
+
+.sidebar-logo {
+    border-color: #303030 !important;
+    background: #080808 !important;
+}
+
+.item-menu {
+    border-radius: 4px !important;
+    color: var(--admin-muted) !important;
+}
+
+.item-menu:hover {
+    background: #171717 !important;
+    color: var(--admin-gold-light) !important;
+}
+
+.item-menu.ativo {
+    background: var(--admin-gold) !important;
+    color: #111111 !important;
+}
+
+.menu-divisor,
+.sidebar-usuario {
+    border-color: #303030 !important;
+}
+
+.sidebar-usuario {
+    background: #0d0d0d !important;
+}
+
+.sidebar-usuario-cargo,
+.sidebar-logout:hover,
+.sidebar-exit:hover {
+    color: var(--admin-gold) !important;
+}
+
+.titulo,
+.admin-header h1,
+.container > h1,
+.header h1,
+.modal-title,
+.card-exclusao h4 {
+    color: var(--admin-text) !important;
+}
+
+.admin-eyebrow,
+.panel-title span,
+label,
+.link-protocolo,
+.protocol-link,
+.link-cliente {
+    color: var(--admin-gold) !important;
+}
+
+.card-dashboard,
+.quadro-tabela,
+.requests-panel,
+.requests-empty,
+.container,
+.card-exclusao,
+.modal-content,
+.card-dados,
+.dado-cliente,
+.filtros,
+.card-grafico,
+.bloco-config-cliente {
+    border-color: var(--admin-border) !important;
+    border-radius: 4px !important;
+    background: var(--admin-card) !important;
+    color: var(--admin-text) !important;
+    box-shadow: none !important;
+}
+
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+    border-color: var(--admin-border) !important;
+}
+
+table {
+    background: var(--admin-card) !important;
+    color: var(--admin-text) !important;
+}
+
+th,
+thead {
+    background: #141414 !important;
+    color: var(--admin-gold) !important;
+}
+
+td,
+tbody tr {
+    background: var(--admin-card) !important;
+    color: var(--admin-text) !important;
+}
+
+tbody tr:hover td {
+    background: #242424 !important;
+}
+
+input,
+textarea,
+select {
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 4px !important;
+    outline: none;
+    background: var(--admin-input) !important;
+    color: var(--admin-text) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--admin-gold) !important;
+    box-shadow: 0 0 0 2px rgba(210, 174, 69, 0.14) !important;
+}
+
+button,
+.btn,
+.botao,
+.action-button,
+.create-button,
+.filter-button,
+.clear-button,
+.btn-voltar,
+.btn-salvar,
+.btn-criar,
+.btn-pesquisar,
+.btn-editar,
+.pagination a {
+    border-radius: 4px !important;
+}
+
+.btn-salvar,
+.btn-criar,
+.btn-pesquisar,
+.create-button,
+.filter-button,
+.botao:not(.botao-perigo) {
+    border-color: var(--admin-gold) !important;
+    background: var(--admin-gold) !important;
+    color: #111111 !important;
+}
+
+.btn-voltar,
+.clear-button,
+.pagination a {
+    border-color: var(--admin-border) !important;
+    background: var(--admin-card) !important;
+    color: var(--admin-text) !important;
+}
+
+.btn-salvar:hover,
+.btn-criar:hover,
+.btn-pesquisar:hover,
+.create-button:hover,
+.filter-button:hover {
+    background: var(--admin-gold-light) !important;
+}
+
+.status-p,
+.status-a,
+.status-f,
+.amarelo,
+.azul,
+.verde,
+.vermelho {
+    border-color: rgba(210, 174, 69, 0.35) !important;
+    background: rgba(210, 174, 69, 0.1) !important;
+    color: var(--admin-gold-light) !important;
+}
+
+
+.quadrado.verde {
+    background: #00e600 !important;
+}
+
+.quadrado.azul {
+    background: #2196f3 !important;
+}
+
+.quadrado.vermelho {
+    background: #ff0000 !important;
+}
+
+.quadrado.amarelo {
+    background: #ffff00 !important;
+}
+
+.btn-excluir,
+.btn-excluir-custom,
+.delete-action,
+.botao-perigo {
+    border-color: var(--admin-danger) !important;
+    background: transparent !important;
+    color: #ef8b8b !important;
+}
+
+.helptext,
+.texto-secundario,
+small {
+    color: var(--admin-muted);
+}
+
+@media (max-width: 700px) {
+    .menu-lateral {
+        border-right: 0 !important;
+        border-bottom: 1px solid #303030 !important;
+    }
+}

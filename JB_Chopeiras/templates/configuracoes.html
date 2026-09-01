@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,6 +11,8 @@
     </title>
 
     <link rel="stylesheet", href="{% static 'css/configuracoes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=1">
 
     <link rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 </head>
@@ -31,13 +33,13 @@
 
 
             <nav class="sidebar-nav">
-
-                <a href="{% url 'dashboard' %}" class="item-menu"><i class="ti ti-layout-dashboard"></i> Dashboard </a>
-                <a href="{% url 'servicosPage' %}". class="item-menu"><i class="ti ti-file-description"></i> Solicitações </a>
-                <a href="{% url 'clientesPage' %}", class="item-menu"><i class="ti ti-users"></i> Clientes </a>
-                <a href="{% url 'relatorios' %}", class="item-menu"> <i class="ti ti-chart-bar"></i> Relatórios </a>
-                <a href="{% url 'configuracoes' %}", class="item-menu ativo"><i class="ti ti-settings"></i> Configurações</a>
-
+                <a href="{% url 'home' %}" class="item-menu"> Início </a>
+                <a href="{% url 'servicos:dashboard' %}" class="item-menu"> Dashboard </a>
+                <a href="{% url 'servicos:lista' %}" class="item-menu"> Solicitações </a>
+                <a href="{% url 'clientesPage' %}" class="item-menu"> Clientes </a>
+                <a href="{% url 'relatorios' %}" class="item-menu"> Relatórios </a>
+                <div class="menu-divisor"></div>
+                <a href="{% url 'configuracoes' %}" class="item-menu ativo"> Configurações </a>
             </nav>
 
 
@@ -146,21 +148,15 @@
 
 
                         <div class="campo">
-
                             <label> Nova senha </label>
-
                             <input type="password", name="nova_senha">
-
                         </div>
 
                         <div class="campo">
-
                             <label> Repetir nova senha </label>
-
                             <input type="password", name="confirmar_senha">
 
                         </div>
-
 
                         <button type="submit", class="botao-salvar"> Alterar senha</button>
 

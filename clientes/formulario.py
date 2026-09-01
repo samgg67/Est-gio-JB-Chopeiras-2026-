@@ -37,3 +37,27 @@ class ClientesFormulario(forms.ModelForm):
             raise forms.ValidationError( 'O telefone deve conter apenas números.')
 
         return telefone
+
+
+class PerfilClienteFormulario(forms.ModelForm):
+    class Meta:
+        model = Clientes
+        fields = ['nome', 'telefone', 'endereco']
+        widgets = {
+            'nome': forms.TextInput(attrs={'autocomplete': 'name'}),
+            'telefone': forms.TextInput(attrs={'autocomplete': 'tel'}),
+            'endereco': forms.TextInput(attrs={'autocomplete': 'street-address'}),
+        }
+
+    def clean_nome(self):
+        nome = self.cleaned_data.get('nome', '').strip()
+        if not nome:
+            raise forms.ValidationError('Informe seu nome.')
+        return nome
+
+    def clean_telefone(self):
+        telefone = self.cleaned_data.get('telefone', '').strip()
+        numeros = re.sub(r'\D', '', telefone)
+        if len(numeros) < 10 or len(numeros) > 11:
+            raise forms.ValidationError('Informe um telefone válido com DDD.')
+        return telefone

@@ -1,0 +1,139 @@
+.menu-lateral {
+    width: 200px;
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    flex-shrink: 0;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    background: #1d1515;
+    border: 2px solid #ffc107;
+}
+
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.sidebar-logo .logo, .sidebar-logo img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.sidebar-nav {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 18px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d4a300 transparent;
+}
+
+.sidebar-nav .item-menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 32px 14px;
+    margin: 0;
+    border: 0;
+    border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: left;
+    color: #ffc107;
+    background: none;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-nav .item-menu:hover {
+    color: #ffc107;
+    background: rgba(255, 193, 7, 0.08);
+}
+
+.sidebar-nav .item-menu.ativo {
+    color: #000000;
+    background: #ffc107;
+    font-weight: 700;
+}
+
+.sidebar-nav .item-menu i {
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.sidebar-nav .menu-divisor {
+    width: auto;
+    height: 1px;
+    margin: 8px 4px;
+    background: rgba(212, 163, 0, 0.2);
+}
+
+.sidebar-usuario {
+    min-height: 88px;
+    flex-shrink: 0;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 16px;
+    border-top: 1px solid #d4a300;
+    background: transparent;
+}
+
+.sidebar-usuario .bolinha-user {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #ffc400;
+}
+
+.sidebar-usuario-info {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-usuario-nome {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.sidebar-usuario-cargo {
+    color: #ffc400;
+    font-size: 12px;
+}
+
+.sidebar-logout {
+    margin: 0;
+    font-size: 25px;
+    line-height: 1;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sidebar-logout:hover {
+    color: #ffc400;
+}
