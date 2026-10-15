@@ -116,7 +116,7 @@ body {
 
 .sidebar-usuario-nome {
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -124,7 +124,7 @@ body {
 
 .sidebar-usuario-cargo {
     color: #ffc400;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .sidebar-logout {

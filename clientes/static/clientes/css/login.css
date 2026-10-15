@@ -1,80 +1,114 @@
 .area-login {
-    min-height: calc(100vh - 70px);
-    background: #111111;
-    padding: 40px 20px;
+    background: var(--black);
+    color: var(--text-100);
+    padding: 24px 20px;
 }
 
-.box-form {
-    background: #000000;
-    border: 1px solid #d4a300;
-    border-radius: 16px;
-    padding: 36px 32px;
+.area-login .container-fluid {
+    max-width: var(--container) !important;
+    padding-inline: 0;
 }
 
-.box-form h2 {
-    color: #ffc400;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 28px;
+.area-login .box-form {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
 }
 
-.form-label {
-    color: white;
+.area-login .box-form h2 {
+    color: var(--text-100);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.area-login .form-label {
+    color: var(--text-300);
     font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 6px;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 
-.form-control {
-    background: #1a1a1a;
-    border: 1px solid #d4a300;
-    border-radius: 8px;
-    color: white;
-    padding: 12px 14px;
+.area-login .mb-3,
+.area-login .mb-4 {
+    margin-bottom: 10px !important;
+}
+
+.area-login .form-control {
+    min-height: 38px;
+    background: var(--graphite);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-100);
+    padding: 7px 12px;
     font-size: 15px;
+    transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-.form-control:focus {
-    background: #1a1a1a;
-    border-color: #ffd54a;
-    color: white;
-    box-shadow: 0 0 8px #555555;
+.area-login .form-control:focus {
+    background: var(--graphite);
+    border-color: var(--gold-500);
+    color: var(--text-100);
+    box-shadow: 0 0 0 3px var(--line);
 }
 
-.link-recuperar {
-    color: #d4a300;
-    font-size: 13px;
+.area-login .link-recuperar {
+    color: var(--gold-500);
+    font-size: 15px;
     text-decoration: none;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
 }
 
-.link-recuperar:hover {
-    color: #ffd54a;
+.area-login .link-recuperar:hover {
+    color: var(--gold-400);
     text-decoration: underline;
 }
 
-.btn-amarelo {
+.area-login .btn-amarelo {
     width: 100%;
-    background: #f2b600;
-    color: #000000;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    transition: 0.3s;
+    min-height: 40px;
+    background: var(--gold-500);
+    color: #101010;
+    font-weight: 750;
+    font-size: .9rem;
+    padding: 9px 18px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
 }
 
-.btn-amarelo:hover {
-    background: #ffd54a;
-    transform: translateY(-1px);
+.area-login .btn-amarelo:hover {
+    background: var(--gold-400);
+    color: #080808;
 }
 
-@media (max-width: 768px) {
+.area-login .btn-amarelo:focus-visible,
+.area-login .link-recuperar:focus-visible {
+    outline: 3px solid var(--gold-500);
+    outline-offset: 3px;
+}
 
-    .box-form {
-        padding: 24px 18px;
-        margin-bottom: 20px;
+.area-login .alert-warning {
+    background: var(--graphite);
+    border: 1px solid var(--gold-700);
+    border-radius: var(--radius-md);
+    color: var(--gold-400);
+}
+
+@media (max-width: 767.98px) {
+
+    .area-login {
+        padding-inline: 14px;
+    }
+
+    .area-login .box-form {
+        padding: 20px 18px;
     }
 }

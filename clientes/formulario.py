@@ -1,13 +1,13 @@
 from django import forms
 from clientes.models import Clientes
-import re
+from clientes.validadores import limpar_nome, limpar_telefone, validar_email_unico
 
 
 class ClientesFormulario(forms.ModelForm):
 
-    tempo_de_fidelidade = forms.IntegerField( required=False)
+    tempo_de_fidelidade = forms.IntegerField( required=False, min_value=0)
 
-    servicos_realizados = forms.IntegerField( required=False)
+    servicos_realizados = forms.IntegerField( required=False, min_value=0)
 
     class Meta:
         model = Clientes
@@ -16,27 +16,23 @@ class ClientesFormulario(forms.ModelForm):
 
 
     def clean_nome(self):
-        nome = self.cleaned_data.get('nome')
+        return limpar_nome(self.cleaned_data.get('nome'))
 
-        if not nome:
-            return nome
 
-        if not re.fullmatch(r'[A-Za-zÀ-ÿ\s]+', nome):
-            raise forms.ValidationError( 'O nome deve conter apenas letras e espaços.' )
-
-        return nome
+    def clean_email(self):
+        return validar_email_unico(self.cleaned_data.get('email'), self.instance.pk)
 
 
     def clean_telefone(self):
-        telefone = self.cleaned_data.get('telefone')
+        return limpar_telefone(self.cleaned_data.get('telefone'))
 
-        if not telefone:
-            return telefone
 
-        if not telefone.isdigit():
-            raise forms.ValidationError( 'O telefone deve conter apenas números.')
+    def clean_tempo_de_fidelidade(self):
+        return self.cleaned_data.get('tempo_de_fidelidade') or 0
 
-        return telefone
+
+    def clean_servicos_realizados(self):
+        return self.cleaned_data.get('servicos_realizados') or 0
 
 
 class PerfilClienteFormulario(forms.ModelForm):
@@ -50,14 +46,10 @@ class PerfilClienteFormulario(forms.ModelForm):
         }
 
     def clean_nome(self):
-        nome = self.cleaned_data.get('nome', '').strip()
+        nome = limpar_nome(self.cleaned_data.get('nome'))
         if not nome:
             raise forms.ValidationError('Informe seu nome.')
         return nome
 
     def clean_telefone(self):
-        telefone = self.cleaned_data.get('telefone', '').strip()
-        numeros = re.sub(r'\D', '', telefone)
-        if len(numeros) < 10 or len(numeros) > 11:
-            raise forms.ValidationError('Informe um telefone válido com DDD.')
-        return telefone
+        return limpar_telefone(self.cleaned_data.get('telefone'))

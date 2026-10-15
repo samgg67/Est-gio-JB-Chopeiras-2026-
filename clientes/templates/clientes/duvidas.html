@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}Dúvidas frequentes | JB Chopeiras{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/duvidas.css' %}?v=8">{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'clientes/css/duvidas.css' %}?v=9">{% endblock %}
 
 {% block content %}
 <div class="faq-page">
@@ -60,25 +60,11 @@
                         <span><small>Envie sua mensagem</small>Mandar um e-mail</span>
                         <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
                     </a>
-                    <a href="{% url 'localizacao' %}" class="support-link">
-                        <i class="ti ti-map-pin" aria-hidden="true"></i>
-                        <span><small>Londrina — PR</small>Ver localização</span>
-                        <i class="ti ti-arrow-right" aria-hidden="true"></i>
-                    </a>
+
                 </div>
             </aside>
         </div>
     </section>
 
-    <section class="faq-cta" aria-labelledby="faq-cta-title">
-        <div class="faq-container faq-cta-inner">
-            <div><p class="faq-eyebrow">SOLICITAÇÃO ONLINE</p><h2 id="faq-cta-title">Já sabe qual é o problema?</h2><p>Envie os detalhes e acompanhe o andamento pelo histórico da sua conta.</p></div>
-            {% if user.is_authenticated %}
-                <a href="{% url 'servicos:solicitar' %}" class="faq-button">Solicitar atendimento <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-            {% else %}
-                <a href="{% url 'tela_entrada' %}" class="faq-button">Entrar para solicitar <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-            {% endif %}
-        </div>
-    </section>
 </div>
 {% endblock %}

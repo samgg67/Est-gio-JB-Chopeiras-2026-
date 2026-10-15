@@ -122,7 +122,7 @@ body {
 }
 
 .card {
-    background: white;
+    background: rgb(32, 32, 32);
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 30px;
@@ -228,7 +228,7 @@ body {
 .indicador span {
     display: block;
     color: #777;
-    font-size: 13px;
+    font-size: 15px;
     margin-bottom: 8px;
 }
 
@@ -271,7 +271,7 @@ tbody tr:hover {
     display: inline-block;
     padding: 6px 10px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 

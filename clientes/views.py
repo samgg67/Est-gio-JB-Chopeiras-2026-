@@ -11,7 +11,10 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
+from django.core.validators import validate_email
 
 from rest_framework import viewsets
 from rest_framework.authentication import BasicAuthentication
@@ -20,6 +23,7 @@ from rest_framework.permissions import IsAdminUser
 from clientes.models import Clientes, LocalizacaoEmpresa, PerguntaFrequente
 from clientes.serializer import ClientesSerializer
 from clientes.formulario import ClientesFormulario, PerfilClienteFormulario
+from clientes.validadores import limpar_nome, limpar_telefone
 from servicos.models import Servico
 
 
@@ -62,10 +66,32 @@ def tela_entrada(request):
             endereco = request.POST.get('endereco', '').strip()
             confirmar_senha = request.POST.get('confirmar_senha', '').strip()
 
+            erro_dados = None
+            try:
+                nome = limpar_nome(nome)
+                telefone = limpar_telefone(telefone)
+                if email:
+                    validate_email(email)
+            except ValidationError as erro:
+                erro_dados = ' '.join(erro.messages)
+
+            erro_senha = None
+            if senha:
+                try:
+                    validate_password(senha, User(username=email, email=email, first_name=nome))
+                except ValidationError as erro:
+                    erro_senha = ' '.join(erro.messages)
+
             if not all((nome, email, telefone, endereco, senha, confirmar_senha)):
                 mensagem = 'Preencha todos os campos obrigatórios.'
+            elif erro_dados:
+                mensagem = erro_dados
+            elif len(nome) > 100 or len(email) > 150 or len(endereco) > 150:
+                mensagem = 'Nome, e-mail ou endereço passaram do tamanho permitido.'
             elif senha != confirmar_senha:
                 mensagem = 'As senhas não coincidem.'
+            elif erro_senha:
+                mensagem = erro_senha
             elif User.objects.filter(username__iexact=email).exists():
                 mensagem = 'Já existe um usuário com esse e-mail.'
             elif Clientes.objects.filter(email__iexact=email).exists():

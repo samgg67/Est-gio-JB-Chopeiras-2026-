@@ -44,7 +44,7 @@
 .titulo-conta p {
     margin: 0;
     color: #aaa;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .mensagem-conta {
@@ -54,7 +54,7 @@
     border-radius: 5px;
     background: #172713;
     color: #c8efb4;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .mensagem-larga {
@@ -65,7 +65,7 @@
 .erro-conta {
     margin-top: 5px;
     color: #ff9292;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .form-conta {
@@ -75,7 +75,7 @@
 .form-conta label {
     margin: 13px 0 7px;
     color: #f2cf48;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .form-conta input {
@@ -102,7 +102,7 @@
 .form-conta small {
     margin-top: 5px;
     color: #999;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.4;
 }
 
@@ -122,7 +122,7 @@
 .acoes-conta a, .acoes-conta button {
     padding: 10px 18px;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -162,7 +162,7 @@
 
 .cabecalho-pagina span {
     color: #d4a300;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
 }
@@ -229,7 +229,7 @@
 .bloco-titulo p {
     margin: 0;
     color: #999;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .campo-conta {
@@ -240,7 +240,7 @@
 .campo-conta label {
     margin-bottom: 7px;
     color: #ffc107;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .campo-conta input {
@@ -267,7 +267,7 @@
 .campo-conta small {
     margin-top: 5px;
     color: #999;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .botao-principal, .botao-secundario, .botao-whatsapp {
@@ -277,7 +277,7 @@
     justify-content: center;
     gap: 7px;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -335,7 +335,7 @@
 .resumo-cliente p {
     margin: 0 0 15px;
     color: #aaa;
-    font-size: 12px;
+    font-size: 14px;
     overflow-wrap: anywhere;
 }
 
@@ -345,7 +345,7 @@
     border-radius: 20px;
     background: rgba(255, 193, 7, 0.12);
     color: #ffc107;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .cartao-senha {
@@ -403,13 +403,13 @@
     display: block;
     margin-bottom: 4px;
     color: #ffc107;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .info-localizacao p {
     margin: 0;
     color: #ddd;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.6;
 }
 

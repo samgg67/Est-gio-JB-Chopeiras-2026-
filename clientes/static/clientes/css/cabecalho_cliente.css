@@ -72,7 +72,7 @@ body > .topo {
 
 .cabecalho-marca small {
     color: var(--cabecalho-suave);
-    font-size: 0.67rem;
+    font-size: 0.8125rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -91,7 +91,7 @@ body > .topo {
     align-items: center;
     position: relative;
     color: #c7c7c2;
-    font-size: 0.87rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -136,7 +136,7 @@ body > .topo {
     justify-content: center;
     gap: 8px;
     border-radius: 9px;
-    font-size: 0.82rem;
+    font-size: 0.9375rem;
     font-weight: 800;
     text-decoration: none;
     transition: 0.2s ease;
@@ -209,20 +209,20 @@ body > .topo {
 
 .dados-conta small {
     color: var(--cabecalho-suave);
-    font-size: 0.62rem;
+    font-size: 0.8125rem;
 }
 
 .dados-conta strong {
     max-width: 110px;
     overflow: hidden;
-    font-size: 0.76rem;
+    font-size: 0.875rem;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .seta-conta {
     color: var(--cabecalho-suave);
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     transition: transform 0.2s ease;
 }
 
@@ -253,7 +253,7 @@ body > .topo {
     gap: 10px;
     border-radius: 7px;
     color: #d5d5d1;
-    font-size: 0.76rem;
+    font-size: 0.875rem;
     text-decoration: none;
     transition: 0.2s ease;
 }

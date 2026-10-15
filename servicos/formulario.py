@@ -1,4 +1,12 @@
 from django import forms
+from django.utils import timezone
+
+from clientes.validadores import (
+    limpar_nome,
+    limpar_problema,
+    limpar_telefone,
+    validar_previsao_entrega,
+)
 
 from .models import Servico
 
@@ -10,19 +18,38 @@ class ServicoFormulario(forms.ModelForm):
             'nome', 'email', 'telefone', 'endereco', 'problema', 'status',
             'notas', 'quantidade', 'previsao_entrega',
         ]
-        widgets = {'previsao_entrega': forms.DateInput(attrs={'type': 'date'})}
+        widgets = {'previsao_entrega': forms.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d')}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'previsao_entrega' in self.fields:
+            minimo = timezone.localdate()
+            salva = self.instance.previsao_entrega
+            if salva and salva < minimo:
+                minimo = salva
+            self.fields['previsao_entrega'].widget.attrs['min'] = minimo.isoformat()
 
     def clean_nome(self):
-        nome = self.cleaned_data.get('nome', '').strip()
-        if not nome.replace(' ', '').isalpha():
-            raise forms.ValidationError('O nome deve conter apenas letras e espaços.')
-        return nome
+        return limpar_nome(self.cleaned_data.get('nome'))
 
     def clean_telefone(self):
-        telefone = self.cleaned_data.get('telefone', '').strip()
-        if telefone and not telefone.isdigit():
-            raise forms.ValidationError('O telefone deve conter apenas números.')
-        return telefone
+        return limpar_telefone(self.cleaned_data.get('telefone'))
+
+    def clean_problema(self):
+        return limpar_problema(self.cleaned_data.get('problema'))
+
+    def clean_previsao_entrega(self):
+        previsao = self.cleaned_data.get('previsao_entrega')
+        # Ao editar, uma data antiga que já estava salva continua valendo.
+        if 'previsao_entrega' in self.changed_data:
+            validar_previsao_entrega(previsao)
+        return previsao
+
+    def clean_quantidade(self):
+        quantidade = self.cleaned_data.get('quantidade')
+        if quantidade is not None and quantidade < 1:
+            raise forms.ValidationError('A quantidade deve ser pelo menos 1.')
+        return quantidade
 
 
 class SolicitacaoFormulario(ServicoFormulario):
@@ -58,11 +85,9 @@ class SolicitacaoFormulario(ServicoFormulario):
             }),
         }
 
-    def clean_problema(self):
-        problema = self.cleaned_data.get('problema', '').strip()
-        if not problema.replace(' ', '').isalpha():
-            raise forms.ValidationError('O problema deve conter apenas letras.')
-        return problema
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['telefone'].required = True
 
     def save(self, commit=True):
         servico = super().save(commit=False)

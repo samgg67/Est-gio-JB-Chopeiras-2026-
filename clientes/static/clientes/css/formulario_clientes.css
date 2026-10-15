@@ -117,7 +117,7 @@ form .erro, form .erro *, form .errorlist, form .errorlist *, form span.erro {
     display: block;
     margin-top: 5px;
     color: #aaaaaa;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .acoes-form {

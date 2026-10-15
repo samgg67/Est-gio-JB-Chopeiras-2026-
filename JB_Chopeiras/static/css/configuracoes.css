@@ -107,13 +107,13 @@ body {
 
 .sidebar-usuario-nome {
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
 }
 
 .sidebar-usuario-cargo {
     color: #FFC107;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .sidebar-logout {
@@ -171,7 +171,7 @@ body {
 .campo label {
     display: block;
     color: #FFC107;
-    font-size: 13px;
+    font-size: 15px;
     margin-bottom: 7px;
 }
 

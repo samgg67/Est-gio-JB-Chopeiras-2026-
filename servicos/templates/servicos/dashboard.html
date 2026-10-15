@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Dashboard - JB Chopeiras</title>
 
-    <link rel="stylesheet" href="{% static 'servicos/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'servicos/css/dashboard.css' %}?v=4">
     <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=2">
     <link
@@ -84,106 +84,78 @@
             </aside>
 
             <main class="conteudo">
-                <h1 class="titulo">Dashboard</h1>
-                <section class="cards-dashboard">
-                    <div class="card-dashboard">
-                        <span class="card-titulo">
-                            Solicitações Totais
-                        </span>
+                <div class="dash">
+                    <h1 class="titulo">Dashboard</h1>
 
-                        <div class="card-numero">
-                            <span class="quadrado verde"></span>
-                            <span>
-                                {{ pedidos_totais }}
-                            </span>
+                    <section class="cards-dashboard">
+                        <div class="card-resumo">
+                            <span class="card-titulo">Solicitações Totais</span>
+                            <div class="card-numero">
+                                <span class="quadrado verde"></span>
+                                <span>{{ pedidos_totais }}</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-dashboard">
-
-                        <span class="card-titulo">
-                            Em atendimento
-                        </span>
-
-                        <div class="card-numero">
-                            <span class="quadrado azul"></span>
-                            <span>
-                                {{ em_atendimento }}
-                            </span>
+                        <div class="card-resumo">
+                            <span class="card-titulo">Em atendimento</span>
+                            <div class="card-numero">
+                                <span class="quadrado azul"></span>
+                                <span>{{ em_atendimento }}</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-dashboard">
-                        <span class="card-titulo">
-                            Finalizados
-                        </span>
-
-                        <div class="card-numero">
-                            <span class="quadrado vermelho"></span>
-                            <span>
-                                {{ finalizados }}
-                            </span>
+                        <div class="card-resumo">
+                            <span class="card-titulo">Finalizados</span>
+                            <div class="card-numero">
+                                <span class="quadrado vermelho"></span>
+                                <span>{{ finalizados }}</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-dashboard">
-                        <span class="card-titulo">
-                            Pendentes
-                        </span>
-
-                        <div class="card-numero">
-                            <span class="quadrado amarelo"></span>
-
-                            <span>
-                                {{ pendentes }}
-                            </span>
+                        <div class="card-resumo">
+                            <span class="card-titulo">Pendentes</span>
+                            <div class="card-numero">
+                                <span class="quadrado amarelo"></span>
+                                <span>{{ pendentes }}</span>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section class="ultimas">
-                    <h2>Últimas solicitações</h2>
-                    <div class="quadro-tabela">
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Protocolo</th>
-                                    <th>Nome do cliente</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {% for servico in ultimas_solicitacoes %}
+                    <section class="ultimas">
+                        <h2>Últimas solicitações</h2>
+                        <div class="quadro-tabela">
+                            <table>
+                                <colgroup>
+                                    <col class="col-protocolo">
+                                    <col>
+                                    <col class="col-status">
+                                </colgroup>
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <a
-                                                href="{% url 'servicos:editar' servico.id %}"
-                                                class="link-protocolo"
-                                            >
-                                                #{{ servico.protocolo }}
-                                            </a>
-                                        </td>
-                                        <td>
-                                            {{ servico.nome }}
-                                        </td>
-                                        <td>
-                                            {{ servico.get_status_display }}
-                                        </td>
+                                        <th>Protocolo</th>
+                                        <th>Nome do cliente</th>
+                                        <th>Status</th>
                                     </tr>
-                                {% empty %}
-                                    <tr>
-                                        <td colspan="3">
-                                            Nenhuma solicitação cadastrada.
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+                                </thead>
+                                <tbody>
+                                    {% for servico in ultimas_solicitacoes %}
+                                        <tr>
+                                            <td>
+                                                <a href="{% url 'servicos:editar' servico.id %}" class="link-protocolo">#{{ servico.protocolo }}</a>
+                                            </td>
+                                            <td>{{ servico.nome }}</td>
+                                            <td>{{ servico.get_status_display }}</td>
+                                        </tr>
+                                    {% empty %}
+                                        <tr>
+                                            <td colspan="3">Nenhuma solicitação cadastrada.</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
             </main>
         </div>
     </div>

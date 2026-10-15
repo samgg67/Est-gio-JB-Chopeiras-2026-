@@ -35,7 +35,7 @@
     justify-content: center;
     gap: 7px;
     color: var(--request-gold);
-    font-size: .72rem;
+    font-size: 0.875rem;
     font-weight: 800;
     letter-spacing: .16em;
 }
@@ -71,7 +71,7 @@
     justify-items: center;
     gap: 8px;
     color: #777;
-    font-size: .78rem;
+    font-size: 0.875rem;
     font-weight: 700;
 }
 
@@ -158,7 +158,7 @@
 .request-card-heading p {
     margin: 0;
     color: var(--request-muted);
-    font-size: .76rem;
+    font-size: 0.875rem;
 }
 
 .form-alert {
@@ -171,7 +171,7 @@
     border-radius: 10px;
     background: rgba(155,38,38,.11);
     color: #ffc1c1;
-    font-size: .78rem;
+    font-size: 0.875rem;
     line-height: 1.5;
 }
 
@@ -203,7 +203,7 @@
 .form-field label {
     margin-bottom: 8px;
     color: #d9d9d5;
-    font-size: .78rem;
+    font-size: 0.875rem;
     font-weight: 700;
 }
 
@@ -240,13 +240,13 @@
 .request-form input {
     height: 46px;
     padding: 10px 13px 10px 42px;
-    font-size: .86rem;
+    font-size: 0.9375rem;
 }
 
 .request-form textarea {
     min-height: 145px;
     padding: 13px;
-    font-size: .86rem;
+    font-size: 0.9375rem;
     line-height: 1.6;
     resize: vertical;
 }
@@ -268,7 +268,7 @@
 .form-field > small {
     margin-top: 6px;
     color: #777;
-    font-size: .67rem;
+    font-size: 0.8125rem;
     line-height: 1.4;
 }
 
@@ -278,7 +278,7 @@
     align-items: center;
     gap: 5px;
     color: #ff9e9e;
-    font-size: .7rem;
+    font-size: 0.8125rem;
     line-height: 1.4;
 }
 
@@ -302,7 +302,7 @@
     align-items: center;
     gap: 6px;
     color: #777;
-    font-size: .68rem;
+    font-size: 0.8125rem;
 }
 
 .form-footer p i {
@@ -322,7 +322,7 @@
     border-radius: 10px;
     background: var(--request-gold);
     color: #111;
-    font-size: .86rem;
+    font-size: 0.9375rem;
     font-weight: 800;
     cursor: pointer;
     transition: transform .2s ease, background .2s ease;
@@ -385,7 +385,7 @@
     border-radius: 50%;
     background: #1c1a13;
     color: var(--request-gold);
-    font-size: .67rem;
+    font-size: 0.8125rem;
     font-weight: 800;
 }
 
@@ -395,13 +395,13 @@
 
 .info-card li strong {
     color: var(--request-text);
-    font-size: .86rem;
+    font-size: 0.9375rem;
 }
 
 .info-card li small {
     margin-top: 2px;
     color: var(--request-muted);
-    font-size: .74rem;
+    font-size: 0.875rem;
     line-height: 1.45;
 }
 
@@ -413,7 +413,7 @@
     justify-content: space-between;
     border-top: 1px solid #303030;
     color: var(--request-gold);
-    font-size: .75rem;
+    font-size: 0.875rem;
     font-weight: 700;
     text-decoration: none;
 }
@@ -445,13 +445,13 @@
 .help-card strong {
     display: block;
     color: var(--request-text);
-    font-size: .75rem;
+    font-size: 0.875rem;
 }
 
 .help-card p {
     margin: 2px 0 0;
     color: var(--request-muted);
-    font-size: .65rem;
+    font-size: 0.8125rem;
 }
 
 .help-card a {
@@ -487,7 +487,7 @@
     }
 
     .request-progress li {
-        font-size: .68rem;
+        font-size: 0.8125rem;
     }
 
     .form-grid, .request-sidebar {

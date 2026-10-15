@@ -121,13 +121,13 @@ body {
 
 .sidebar-usuario-nome {
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
 }
 
 .sidebar-usuario-cargo {
     color: #ffc400;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .sidebar-logout {
@@ -141,100 +141,59 @@ body {
 
 .conteudo {
     flex: 1;
+    min-width: 0;
     min-height: 100vh;
-    background: #251d1b;
-    padding: 40px 60px 60px;
-    margin-left: 0;
-    width: auto;
+    padding: 40px 48px 60px;
+}
+
+.dash {
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .titulo {
     text-align: center;
-    color: #ffc400;
     font-size: 34px;
     font-weight: bold;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
 }
 
 .cards-dashboard {
-    width: 88%;
-    max-width: 1200px;
-    margin: 0 auto 55px;
+    margin-bottom: 48px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
 }
 
-.ultimas {
-    width: 88%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.quadro-tabela {
-    width: 100%;
-    border: 1px solid #d4a300;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.cards-dashboard {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto 45px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.card-dashboard {
+.card-resumo {
     text-align: center;
 }
 
 .card-titulo {
     display: block;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 10px;
 }
 
 .card-numero {
-    height: 60px;
+    height: 64px;
     background: #111111;
     border: 1px solid #d4a300;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 14px;
     font-size: 27px;
+    font-weight: bold;
 }
 
 .quadrado {
     width: 14px;
     height: 14px;
     display: inline-block;
-}
-
-.azul {
-    background: #2196f3;
-}
-
-.amarelo {
-    background: #ffff00;
-}
-
-.verde {
-    background: #00e600;
-}
-
-.vermelho {
-    background: #ff0000;
-}
-
-.ultimas {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
+    flex-shrink: 0;
 }
 
 .ultimas h2 {
@@ -242,73 +201,66 @@ body {
     color: #ffffff;
     font-size: 19px;
     font-weight: normal;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .quadro-tabela {
     width: 100%;
     border: 1px solid #d4a300;
     border-radius: 4px;
-    overflow: hidden;
+    overflow-x: auto;
 }
 
-table {
+.quadro-tabela table {
     width: 100%;
     border-collapse: collapse;
-    background: #111111;
+    table-layout: fixed;
 }
 
-thead {
-    background: #0b0b0b;
+.col-protocolo {
+    width: 25%;
 }
 
-th {
-    color: #ffffff;
+.col-status {
+    width: 25%;
+}
+
+.quadro-tabela th,
+.quadro-tabela td {
+    padding: 15px 12px;
+    text-align: center;
+    border: 0;
+    border-bottom: 1px solid #292929;
+    overflow-wrap: anywhere;
+}
+
+.quadro-tabela th {
     font-size: 14px;
     font-weight: bold;
-    padding: 14px 10px;
-    border-right: 1px solid #d4a300;
-    border-bottom: 1px solid #d4a300;
 }
 
-th:last-child {
-    border-right: none;
+.quadro-tabela th + th,
+.quadro-tabela td + td {
+    border-left: 1px solid #292929;
 }
 
-td {
-    color: #ffffff;
-    text-align: center;
-    padding: 17px 10px;
-    border-right: 1px solid #292929;
-    border-bottom: 1px solid #292929;
-}
-
-td:last-child {
-    border-right: none;
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background: #181818;
+.quadro-tabela tbody tr:last-child td {
+    border-bottom: 0;
 }
 
 .link-protocolo {
-    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
 
 .link-protocolo:hover {
-    color: #ffc400;
+    text-decoration: underline;
 }
 
 @media (max-width: 1000px) {
 
     .cards-dashboard {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
@@ -326,13 +278,8 @@ tbody tr:hover {
     }
 
     .conteudo {
-        margin-left: 0;
         width: 100%;
         padding: 25px 15px;
-    }
-
-    .cards-dashboard {
-        grid-template-columns: 1fr;
     }
 
 }

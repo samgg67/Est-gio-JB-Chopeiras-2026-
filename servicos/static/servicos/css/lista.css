@@ -34,7 +34,7 @@
     margin-top: 3px;
     display: block;
     color: #96948d;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .status {
@@ -44,13 +44,16 @@
     border-radius: 999px;
     background: rgba(210, 174, 69, 0.1);
     color: #e1c263;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     white-space: nowrap;
 }
 
+.quadro-tabela .info-secundaria {
+    overflow-wrap: anywhere;
+}
+
 .conteudo > .pagination {
-    width: 80%;
     margin: 18px auto 0;
 }
 

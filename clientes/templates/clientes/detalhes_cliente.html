@@ -4,31 +4,120 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes do Cliente</title>
-    <link rel="stylesheet" href="{% static 'clientes/css/detalhe_cliente.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cliente.nome }} - Clientes - JB Chopeiras</title>
+    <link rel="stylesheet" href="{% static 'clientes/css/clientes.css' %}?v=4">
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin_theme.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'clientes/css/detalhe_cliente.css' %}?v=5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 </head>
 <body>
 
-<div class="container">
+<div class="pagina">
+    <div class="miolo">
+        <aside class="menu-lateral">
+            <div class="sidebar-logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo JB Chopeiras" class="logo">
+                </a>
+            </div>
 
-    <h1>Dados do Cliente</h1>
+            <nav class="sidebar-nav">
+                <a href="{% url 'home' %}" class="item-menu"> Início </a>
+                <a href="{% url 'servicos:dashboard' %}" class="item-menu"> Dashboard </a>
+                <a href="{% url 'servicos:lista' %}" class="item-menu"> Solicitações </a>
+                <a href="{% url 'clientesPage' %}" class="item-menu ativo"> Clientes </a>
+                <a href="{% url 'relatorios' %}" class="item-menu"> Relatórios </a>
+                <div class="menu-divisor"></div>
+                <a href="{% url 'configuracoes' %}" class="item-menu"> Configuraçoes </a>
+            </nav>
 
-    <p class="dado-cliente"> <strong>ID:</strong> {{ cliente.id }} </p>
+            <div class="sidebar-usuario">
+                <div class="bolinha-user"></div>
+                <div class="sidebar-usuario-info">
+                    <span class="sidebar-usuario-nome"> {{ user.username }} </span>
+                    <span class="sidebar-usuario-cargo"> Administrador </span>
+                </div>
+                <a href="{% url 'sair' %}">
+                    <i class="ti ti-logout sidebar-logout" title="Sair"></i>
+                </a>
+            </div>
+        </aside>
 
-    <p class="dado-cliente"> <strong>Nome:</strong> {{ cliente.nome }} </p>
+        <main class="conteudo">
+            <div class="detalhe">
+                <nav class="detalhe-trilha" aria-label="Você está em">
+                    <a href="{% url 'clientesPage' %}">Clientes</a>
+                    <span aria-hidden="true">/</span>
+                    <span>{{ cliente.nome }}</span>
+                </nav>
 
-    <p class="dado-cliente"> <strong>Email:</strong> {{ cliente.email }} </p>
+                <header class="detalhe-cabecalho">
+                    <div class="detalhe-perfil">
+                        <span class="detalhe-avatar" aria-hidden="true">{{ cliente.nome|first|upper }}</span>
+                        <div>
+                            <h1 class="detalhe-nome">{{ cliente.nome }}</h1>
+                            <p class="detalhe-sub">
+                                Cliente nº {{ cliente.id }}
+                                {% if cliente.ativo %}
+                                    <span class="detalhe-status detalhe-status-ativo">Ativo</span>
+                                {% else %}
+                                    <span class="detalhe-status detalhe-status-inativo">Inativo desde {{ cliente.deletado_em|date:"d/m/Y" }}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
 
-    <p class="dado-cliente"> <strong>Telefone:</strong> {{ cliente.telefone }} </p>
+                    <div class="detalhe-acoes">
+                        {% if cliente.ativo %}
+                            <form method="POST" action="{% url 'inativar_cliente' cliente.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="detalhe-botao detalhe-botao-secundario">Inativar</button>
+                            </form>
+                            <a href="{% url 'editar_cliente' cliente.id %}" class="detalhe-botao detalhe-botao-principal">Editar cliente</a>
+                        {% else %}
+                            <form method="POST" action="{% url 'reativar_cliente' cliente.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="detalhe-botao detalhe-botao-principal">Reativar cliente</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </header>
 
-    <p class="dado-cliente"> <strong>Endereço:</strong> {{ cliente.endereco }} </p>
-
-    <p class="dado-cliente"> <strong>Tempo de Fidelidade:</strong> {{ cliente.tempo_de_fidelidade }} anos </p>
-
-    <p class="dado-cliente"> <strong>Serviços Realizados:</strong> {{ cliente.servicos_realizados }} </p>
-    <a href="{% url 'clientesPage' %}" class="btn-voltar"> Voltar </a>
-
+                <div class="detalhe-tabela">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Nome completo</th>
+                                <td>{{ cliente.nome }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">E-mail</th>
+                                <td><a href="mailto:{{ cliente.email }}">{{ cliente.email }}</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Telefone</th>
+                                <td>{{ cliente.telefone|default:"Não informado" }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Endereço</th>
+                                <td>{{ cliente.endereco|default:"Não informado" }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tempo de fidelidade</th>
+                                <td>{{ cliente.tempo_de_fidelidade }} {{ cliente.tempo_de_fidelidade|pluralize:"ano,anos" }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Serviços realizados</th>
+                                <td>{{ cliente.servicos_realizados }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
 </div>
 
 </body>

@@ -97,7 +97,7 @@ body {
 
 .item-menu.sub {
     padding-left: 30px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .menu-divisor {
@@ -141,7 +141,7 @@ body {
 }
 
 .sidebar-usuario-cargo {
-    font-size: 12px;
+    font-size: 14px;
     color: #FFC107;
 }
 
@@ -172,7 +172,8 @@ body {
 }
 
 .topo-conteudo {
-    width: 80%;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto 20px auto;
     display: flex;
     justify-content: space-between;
@@ -205,11 +206,11 @@ body {
 .btn-editar {
     background: #2563eb;
     color: white;
-    padding: 6px 10px;
+    padding: 7px 14px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    width: 120px;
+    min-width: 90px;
     transition: background 0.15s;
 }
 
@@ -220,11 +221,11 @@ body {
 .btn-excluir {
     background: #dc2626;
     color: white;
-    padding: 6px 10px;
+    padding: 7px 14px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    width: 120px;
+    min-width: 90px;
     transition: background 0.15s;
 }
 
@@ -233,7 +234,8 @@ body {
 }
 
 .quadro-tabela {
-    width: 80%;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     background: #000000;
     border: 1px solid #FFC107;
@@ -248,7 +250,7 @@ table {
 }
 
 th {
-    padding: 13px 34px;
+    padding: 13px 12px;
     border: 1px solid #FFC107;
     text-align: center;
     background: #111111;
@@ -258,7 +260,7 @@ th {
 }
 
 td {
-    padding: 10px 6px;
+    padding: 12px 10px;
     border: 1px solid #252525;
     text-align: center;
     vertical-align: middle;
@@ -328,7 +330,8 @@ tr:hover td {
 }
 
 .conteudo > .pagination {
-    width: 80%;
+    width: 100%;
+    max-width: 1400px;
     margin: 18px auto 0;
 }
 

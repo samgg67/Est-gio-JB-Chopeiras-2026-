@@ -40,7 +40,7 @@
     align-items: center;
     gap: 7px;
     color: var(--history-gold);
-    font-size: .72rem;
+    font-size: 0.875rem;
     font-weight: 800;
     letter-spacing: .16em;
 }
@@ -69,7 +69,7 @@
     justify-content: center;
     gap: 8px;
     border-radius: 10px;
-    font-size: .82rem;
+    font-size: 0.9375rem;
     font-weight: 800;
     text-decoration: none;
     transition: transform .2s ease, background .2s ease, border-color .2s ease;
@@ -107,7 +107,7 @@
 
 .history-toolbar > div > span {
     color: var(--history-gold);
-    font-size: .7rem;
+    font-size: 0.8125rem;
     font-weight: 800;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -136,7 +136,7 @@
     place-items: center;
     border-radius: 7px;
     color: #888;
-    font-size: .76rem;
+    font-size: 0.875rem;
     font-weight: 700;
     text-decoration: none;
     white-space: nowrap;
@@ -190,7 +190,7 @@
 
 .history-card-header small {
     color: #777;
-    font-size: .66rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: .13em;
 }
@@ -207,7 +207,7 @@
     gap: 5px;
     border: 1px solid;
     border-radius: 999px;
-    font-size: .69rem;
+    font-size: 0.8125rem;
     font-weight: 750;
     white-space: nowrap;
 }
@@ -240,7 +240,7 @@
     align-items: center;
     gap: 6px;
     color: #777;
-    font-size: .73rem;
+    font-size: 0.875rem;
 }
 
 .request-date i {
@@ -284,13 +284,13 @@
     min-width: 0;
     display: grid;
     overflow-wrap: anywhere;
-    font-size: .78rem;
+    font-size: 0.875rem;
     font-weight: 700;
 }
 
 .history-meta small {
     color: #777;
-    font-size: .65rem;
+    font-size: 0.8125rem;
     font-weight: 500;
 }
 
@@ -305,7 +305,7 @@
     align-items: center;
     justify-content: space-between;
     color: #aaa;
-    font-size: .75rem;
+    font-size: 0.875rem;
     font-weight: 700;
     cursor: pointer;
     list-style: none;
@@ -340,7 +340,7 @@
 .history-details p {
     margin: 0;
     color: #aaa;
-    font-size: .77rem;
+    font-size: 0.875rem;
     line-height: 1.55;
     overflow-wrap: anywhere;
 }
@@ -349,7 +349,7 @@
     display: block;
     margin-bottom: 3px;
     color: #777;
-    font-size: .65rem;
+    font-size: 0.8125rem;
     letter-spacing: .04em;
     text-transform: uppercase;
 }
@@ -383,7 +383,7 @@
     margin: 0 auto;
     max-width: 480px;
     color: var(--history-muted);
-    font-size: .83rem;
+    font-size: 0.9375rem;
     line-height: 1.6;
 }
 
